@@ -19,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/qiuxiang/react-native-amap3d"
+    "url": "https://github.com/1035901787/react-native-s-baidumap"
   },
   "peerDependencies": {
     "react-native": ">=0.47"
