@@ -1,0 +1,42 @@
+{
+  "name": "react-native-s-baidumap",
+  "version": "1.0.2",
+  "description": "react-native 百度地图组件，支持 Android + iOS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "arno",
+  "license": "ISC",
+  "keywords": [
+    "react-native",
+    "baidumap",
+    "maps",
+    "mapview"
+  ],
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qiuxiang/react-native-amap3d"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.47"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "babel-preset-react-native": "^4.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "flow-bin": "^0.69.0",
+    "react": "16.2.0",
+    "react-native": "0.52.3"
+  },
+  "presets": [
+    "react-native"
+  ]
+}
