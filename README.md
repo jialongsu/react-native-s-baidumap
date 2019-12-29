@@ -159,36 +159,36 @@ cd ios && pod install
 ## Geolocation Methods
 ## 定位方法
 |Method|Description  |Result|
-|--|--|--|--|
+|--|--|--|
 | initSDK(key) | ios使用定位前需要调用该方法 | |
 | start ()|开始持续定位 | |
 | stop() |停止持续定位 | |
 | addListener (func)|定位成功监听 | geolocation result|
 ## 地理编码
 |Method|Description  |Result|
-|--|--|--|--|
+|--|--|--|
 | geocode(address, city) | 地理编码方法 | |
 | addListener |地理编码成功监听 | {longitude, latitude}|
 
 ## 逆地理编码
 |Method|Description  |Result|
-|--|--|--|--|
+|--|--|--|
 | reverseGeoCode(lat, lng) | 逆地理编码方法 | |
 | addListener |逆地理编码成功监听 | geolocation result|
 
 ## Search Methods
 ## POI检索
 |Method|Description  |Result|
-|--|--|--|--|
+|--|--|--|
 | searchInCity(city, keyword, pageNum): Promise | POI城市内检索（关键字检索） | search result|
 | searchInCity({latitude, longitude, keyword, pageNum, radius}): Promise |周边检索 | geolocation result|
 ## 地点检索
 |Method|Description  |Result|
-|--|--|--|--|
+|--|--|--|
 | requestSuggestion(city, keyword): Promise | 输入提示检索 | search result|
 ## RoutePlan Methods
 |Method|Description  |Result|
-|--|--|--|--|
+|--|--|--|
 | **walkingRouteSearch**({startCity: 起点城市, startAddres: 起点位置, endCity: 终点城市, endAddres: 终点位置, city: 起点与终点是同一个城市, city, startCity, endCity同时使用，起点与终点都使用city}): Promise | 步行路线规划 | Route result|
 | **drivingRouteSearch**({startCity: 起点城市, startAddres: 起点位置, endCity: 终点城市, endAddres: 终点位置, city: 起点与终点是同一个城市, city, startCity, endCity同时使用，起点与终点都使用city, trafficPolicyType: 是否开起路况, drivingPolicyType: 驾车策略}): Promise | 驾车路线规划 | Route result|
 | **bikingRouteSearch**({startCity: 起点城市, startAddres: 起点位置, endCity: 终点城市, endAddres: 终点位置, city: 起点与终点是同一个城市, city, startCity, endCity同时使用，起点与终点都使用city, ridingType:  骑行类型（0：普通骑行模式，1：电动车模式）}): Promise | 骑行路线规划 | Route result|
