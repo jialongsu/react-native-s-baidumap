@@ -111,7 +111,7 @@ cd ios && pod install
 | zoomGesturesEnabled | bool |true |是否允许缩放手势|
 | scrollGesturesEnabled | bool |true |是否允许拖拽手势|
 | overlookingGesturesEnabled | bool |true |是否允许俯视手势|
-| rotateGesturesEnabled | bool |true |否允许旋转手势|
+| rotateGesturesEnabled | bool |true |是否允许旋转手势|
 | mapCustomStyleFileName | string |”“ |用于设置个性化地图的样式文件|
 | onMapLoaded | func |()=>{} |地图加载完成回调|
 | onMapClick | func |()=>{} |点击地图回调|
