@@ -163,18 +163,18 @@ cd ios && pod install
 | initSDK(key) | ios使用定位前需要调用该方法 | |
 | start ()|开始持续定位 | |
 | stop() |停止持续定位 | |
-| addListener (func)|定位成功监听 | geolocation result|
+| addListener(func)|定位成功监听 | geolocation result|
 ## 地理编码
 |Method|Description  |Result|
 |--|--|--|
 | geocode(address, city) | 地理编码方法 | |
-| addListener |地理编码成功监听 | {longitude, latitude}|
+| addListener(func) |地理编码成功监听 | {longitude, latitude}|
 
 ## 逆地理编码
 |Method|Description  |Result|
 |--|--|--|
 | reverseGeoCode(lat, lng) | 逆地理编码方法 | |
-| addListener |逆地理编码成功监听 | geolocation result|
+| addListener(func) |逆地理编码成功监听 | geolocation result|
 
 ## Search Methods
 ## POI检索
