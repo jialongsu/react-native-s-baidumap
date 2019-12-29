@@ -12,6 +12,7 @@ export default class Page extends Component {
       {text: '百度地图Demo', pageName: 'MapDemo'},
       {text: '百度地图定位Demo', pageName: 'GeolocationDem'},
       {text: '百度搜索Api_Demo', pageName: 'SearchDemo'},
+      {text: '百度搜索路线规划', pageName: 'RoutePlanSearchDemo'},
     ];
     return (
       <ScrollView style={styles.con}>

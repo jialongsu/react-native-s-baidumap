@@ -1,8 +1,9 @@
-import MapView from './lib/js/MapView';
-import Marker from './lib/js/Marker';
-import Polyline from './lib/js/Polyline';
-import Search from './lib/js/Search';
-import Geolocation from './lib/js/Geolocation';
+import MapView from './lib/MapView';
+import Marker from './lib/Marker';
+import Polyline from './lib/Polyline';
+import * as Search from './lib/Search';
+import * as Geolocation from './lib/Geolocation';
+import * as RoutePlanSearch from './lib/RoutePlanSearch';
 
 export default MapView;
 
@@ -12,5 +13,6 @@ export {
   Polyline,
   
   Search,
-  Geolocation
+  Geolocation,
+  RoutePlanSearch
 }

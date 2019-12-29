@@ -6,15 +6,10 @@
 
 import React, {Component} from 'react';
 import {StyleSheet, View, Button} from 'react-native';
-import MapView from './js/MapView';
-import Marker from './js/Marker';
-import BaiduMap from 'react-native-s-baidumap/index';
-import {
-  geolocation,
-  geocodeModule,
-  reverseGeoCodeModule,
-} from './js/Geolocation';
-console.log('BaiduMap-1-1-1--1-1-:', BaiduMap);
+import {MapView, Marker, Geolocation} from 'react-native-s-baidumap';
+import riderIcon from './images/riderIcon.png';
+
+const {geolocation, geocodeModule, reverseGeoCodeModule} = Geolocation;
 
 export default class App extends Component {
   state = {
@@ -136,25 +131,29 @@ export default class App extends Component {
         <MapView
           ref={this.setMapView}
           style={styles.map}
-          zoom={13}
+          zoom={8}
           zoomMaxLevel={18}
           centerLatLng={location}>
           <Marker
             title={'Marker'}
             active={true}
-            icon={'start_mark'}
+            icon={riderIcon}
+            // icon={'start_mark'}
             location={location}
-            infoWindowYOffset={-280}
+            infoWindowYOffset={-90}
           />
           <Marker
             title={isShow ? 'Marker2' : 'Marker2-isShow'}
             active={true}
-            icon={'end_mark'}
+            // icon={'end_mark'}
+            icon={
+              'https://dlm-images.oss-cn-hangzhou.aliyuncs.com/6e39c0b3a8b447c588be6c22bf13b908'
+            }
             location={{
               latitude: 38.914607,
               longitude: 116.406844,
             }}
-            infoWindowYOffset={-280}
+            infoWindowYOffset={-80}
           />
         </MapView>
       </View>

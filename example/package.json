@@ -1,5 +1,5 @@
 {
-  "name": "react-native-s-baidumap",
+  "name": "example",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -14,7 +14,7 @@
     "react-native": "0.61.5",
     "react-native-gesture-handler": "^1.5.2",
     "react-native-reanimated": "^1.4.0",
-    "react-native-s-baidumap": "^1.0.2",
+    "react-native-s-baidumap": "^1.1.1",
     "react-native-screens": "^2.0.0-alpha.22",
     "react-native-webview": "^8.0.1",
     "react-navigation": "^4.0.10",

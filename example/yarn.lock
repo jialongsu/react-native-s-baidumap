@@ -4374,9 +4374,9 @@ react-native-reanimated@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.4.0.tgz#7f1acbf9be08492d834f512700570978052be2f9"
 
-react-native-s-baidumap@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-native-s-baidumap/-/react-native-s-baidumap-1.0.2.tgz#e2fdad417a2063b32c3f845e5006ba7ccf20f7f6"
+react-native-s-baidumap@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-s-baidumap/-/react-native-s-baidumap-1.1.1.tgz#605a31a84e3ba12217a923c5ad9034e04da9c450"
 
 react-native-safe-area-view@^0.14.1:
   version "0.14.8"

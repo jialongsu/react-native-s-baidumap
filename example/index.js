@@ -4,8 +4,8 @@
 
 import {AppRegistry} from 'react-native';
 import {name as appName} from './app.json';
-import App from './App';
-// import App from './app/Router';
+// import App from './App';
+import App from './app/Router';
 
 /**
  * 关闭警告提示

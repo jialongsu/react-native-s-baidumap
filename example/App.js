@@ -22,7 +22,7 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import MapView from 'react-native-s-baidumap';
+import {MapView} from 'react-native-s-baidumap';
 
 console.log('MapView-1--1-1--1:', MapView);
 

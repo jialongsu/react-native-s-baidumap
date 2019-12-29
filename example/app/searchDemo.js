@@ -1,7 +1,9 @@
 // 'use strict';
 import React, {Component} from 'react';
 import {StyleSheet, View, Button, Text, FlatList} from 'react-native';
-import {searchPoi, suggestion} from './js/Search';
+import {Search} from 'react-native-s-baidumap';
+
+const {searchPoi, suggestion} = Search;
 
 export default class Page extends Component {
   static navigationOptions = {

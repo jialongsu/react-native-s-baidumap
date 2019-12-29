@@ -6,9 +6,7 @@
 
 import React, {Component} from 'react';
 import {StyleSheet, View, Button, Platform} from 'react-native';
-import MapView from './js/MapView';
-import Marker from './js/Marker';
-import Polyline from './js/Polyline';
+import {MapView, Marker, Polyline} from 'react-native-s-baidumap';
 
 const isIos = Platform.OS === 'ios';
 
@@ -25,6 +23,8 @@ export default class App extends Component {
     markerIcon2: 'end_mark',
     lineColor: '#F88334',
     lineWidth: 2,
+    baiduMapType: 1,
+    mapCustomStyleFileName: '',
   };
 
   static navigationOptions = {
@@ -72,6 +72,20 @@ export default class App extends Component {
     ]);
   };
 
+  setBaiduMapType = baiduMapType => {
+    this.setState({
+      baiduMapType,
+      mapCustomStyleFileName: '',
+    });
+  };
+
+  setMapCustomStyle = () => {
+    this.setState({
+      mapCustomStyleFileName: 'custom_map_config_gray',
+      baiduMapType: 1,
+    });
+  };
+
   setMapView = view => {
     this.mapView = view;
   };
@@ -84,31 +98,34 @@ export default class App extends Component {
       markerIcon2,
       lineColor,
       lineWidth,
+      baiduMapType,
+      mapCustomStyleFileName,
     } = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.buttonCon}>
           <Button
-            style={styles.btn}
-            title={'设置地图中心'}
-            onPress={this.setCenter}
+            title={'标准地图'}
+            onPress={this.setBaiduMapType.bind(this, 1)}
           />
           <Button
-            style={styles.btn}
-            title={'地图缩放'}
-            onPress={this.setZoom}
+            title={'卫星地图'}
+            onPress={this.setBaiduMapType.bind(this, 2)}
           />
+          <Button title={'设置个性化地图'} onPress={this.setMapCustomStyle} />
+          <Button title={'设置地图中心'} onPress={this.setCenter} />
+          <Button title={'地图缩放'} onPress={this.setZoom} />
           <Button
-            style={styles.btn}
-            title={'显示所有Marker点'}
+            title={'显示所有Marker点在视图内'}
             onPress={this.setZoomToSpanMarkers}
           />
         </View>
         <MapView
           ref={this.setMapView}
           style={styles.map}
-          baiduMapType={1}
+          baiduMapType={baiduMapType}
           zoom={18}
+          mapCustomStyleFileName={mapCustomStyleFileName}
           trafficEnabled={false}
           zoomControlsVisible={true}
           baiduHeatMapEnabled={false}
