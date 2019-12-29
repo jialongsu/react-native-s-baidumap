@@ -181,7 +181,7 @@ cd ios && pod install
 |Method|Description  |Result|
 |--|--|--|
 | searchInCity(city, keyword, pageNum): Promise | POI城市内检索（关键字检索） | search result|
-| searchInCity({latitude, longitude, keyword, pageNum, radius}): Promise |周边检索 | geolocation result|
+| searchNearby({latitude, longitude, keyword, pageNum, radius}): Promise |周边检索 | geolocation result|
 ## 地点检索
 |Method|Description  |Result|
 |--|--|--|
