@@ -64,6 +64,7 @@ public class BaiduMapSearchModule extends ReactContextBaseJavaModule {
                         data.pushMap(attr);
                     }
                     writableMap.putInt("type", type);
+                    writableMap.putInt("code", 1000);
                     writableMap.putArray("poiList", data);
                     searchPromise.resolve(writableMap);
 //                onSendEvent("BaiduPoiSearch", writableMap);
@@ -111,6 +112,7 @@ public class BaiduMapSearchModule extends ReactContextBaseJavaModule {
                         data.pushMap(attr);
                     }
                     writableMap.putInt("type", type);
+                    writableMap.putInt("code", 1000);
                     writableMap.putArray("poiList", data);
                     searchPromise.resolve(writableMap);
 //                onSendEvent("BaiduRequestSuggestion", writableMap);

@@ -57,6 +57,7 @@ public class OverlayMarker extends ReactViewGroup implements OverlayView {
     private int infoWindowTextSize = 16;
     private InfoWindow mInfoWindow;
     private BaiduMap mBaiduMap;
+    private int iconHeight = 0;
 
     private DataSource<CloseableReference<CloseableImage>> dataSource;
     private volatile boolean loadingImage = false;
@@ -272,14 +273,23 @@ public class OverlayMarker extends ReactViewGroup implements OverlayView {
         return this.propActive;
     }
 
+    public void setIconHeight(int iconHeight) {
+        this.iconHeight = iconHeight;
+    }
+    public int getIconHeight() {
+        return this.iconHeight;
+    }
+
     public void setInfoWindowYOffset(int infoWindowYOffset) {
         this.infoWindowYOffset = infoWindowYOffset;
         if(mInfoWindow != null) {
-            mInfoWindow.setYOffset(infoWindowYOffset);
+            mInfoWindow.setYOffset(getInfoWindowYOffset());
         }
     }
 
     public int getInfoWindowYOffset() {
+        int iconHeight = getIconHeight() + 5;
+        this.infoWindowYOffset = this.infoWindowYOffset + -iconHeight;
         return this.infoWindowYOffset;
     }
 

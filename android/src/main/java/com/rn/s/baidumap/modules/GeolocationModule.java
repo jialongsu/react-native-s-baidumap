@@ -1,5 +1,7 @@
 package com.rn.s.baidumap.modules;
 
+import android.util.Log;
+
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
@@ -19,6 +21,7 @@ import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -40,6 +43,7 @@ import androidx.annotation.Nullable;
 
 public class GeolocationModule extends ReactContextBaseJavaModule implements MKOfflineMapListener {
 
+    private Promise geoPromise;
     private ReactApplicationContext mReactContext;
     private LocationClient mLocationClient = null;
     private LocationClientOption mClientOption = null;
@@ -54,13 +58,15 @@ public class GeolocationModule extends ReactContextBaseJavaModule implements MKO
         mOffline = new MKOfflineMap();
         mOffline.init(this);
         mLocationClient = new LocationClient(reactContext);
-//        mClientOption = new LocationClientOption();
-//        mClientOption.setCoorType("bd09ll");
+        mClientOption = new LocationClientOption();
+        mClientOption.setCoorType("bd09ll");
 //        mClientOption.setOpenAutoNotifyMode(); //打开后位置移动会返回位置信息
-//        mClientOption.setEnableSimulateGps(true);
-//        mClientOption.setIsNeedAddress(true);
-//        mClientOption.setIsNeedLocationDescribe(true);
-//        mLocationClient.setLocOption(mClientOption);
+        mClientOption.setScanSpan(8000);
+        mClientOption.setOpenGps(true);
+        mClientOption.setEnableSimulateGps(true);
+        mClientOption.setIsNeedAddress(true);
+        mClientOption.setIsNeedLocationDescribe(true);
+        mLocationClient.setLocOption(mClientOption);
         //定位监听
         mLocationClient.registerLocationListener(new BDAbstractLocationListener() {
             @Override
@@ -96,21 +102,23 @@ public class GeolocationModule extends ReactContextBaseJavaModule implements MKO
             public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
                 WritableMap data = Arguments.createMap();
                 if (geoCodeResult == null || geoCodeResult.error != SearchResult.ERRORNO.NO_ERROR) {
-                    data.putInt("errcode", -1);
-                }
-                else {
+//                    data.putInt("errcode", -1);
+                    geoPromise.reject("-1", geoCodeResult.error + "");
+                } else {
                     LatLng latLng = geoCodeResult.getLocation();
                     data.putDouble("longitude", latLng.longitude);
                     data.putDouble("latitude", latLng.latitude);
+                    geoPromise.resolve(data);
                 }
-                onSendEvent("baiduMapGeocode", data);
+//                onSendEvent("baiduMapGeocode", data);
             }
 
             @Override
             public void onGetReverseGeoCodeResult(ReverseGeoCodeResult reverseGeoCodeResult) {
                 WritableMap data = Arguments.createMap();
                 if (reverseGeoCodeResult == null || reverseGeoCodeResult.error != SearchResult.ERRORNO.NO_ERROR) {
-                    data.putInt("errcode", -1);
+//                    data.putInt("errcode", -1);
+                    geoPromise.reject("-1", reverseGeoCodeResult.error + "");
                 } else {
                     LatLng latLng = reverseGeoCodeResult.getLocation();
                     ReverseGeoCodeResult.AddressComponent addressComponent = reverseGeoCodeResult.getAddressDetail();
@@ -149,8 +157,9 @@ public class GeolocationModule extends ReactContextBaseJavaModule implements MKO
                         downLoadOfflineMap(addressComponent.city);
                     }
 
+                    geoPromise.resolve(data);
                 }
-                onSendEvent("baiduMapReverseGeoCode", data);
+//                onSendEvent("baiduMapReverseGeoCode", data);
             }
         });
     }
@@ -173,7 +182,7 @@ public class GeolocationModule extends ReactContextBaseJavaModule implements MKO
 
     @ReactMethod
     public void setOptions(ReadableMap options) {
-        LocationClientOption clientOption = new LocationClientOption();
+        LocationClientOption clientOption = mClientOption;
         int scanSpan = 8000;
         boolean openGps = true;
         String coorType = "bd09ll";
@@ -236,12 +245,14 @@ public class GeolocationModule extends ReactContextBaseJavaModule implements MKO
     }
 
     @ReactMethod
-    public void geocode(String address, String city) {
+    public void geocode(String address, String city, Promise promise) {
+        geoPromise = promise;
         mCoder.geocode(new GeoCodeOption().address(address).city(city));
     }
 
     @ReactMethod
-    public void reverseGeoCode(double lat, double lng) {
+    public void reverseGeoCode(double lat, double lng, Promise promise) {
+        geoPromise = promise;
         mCoder.reverseGeoCode(new ReverseGeoCodeOption().location(new LatLng(lat, lng)));
     }
 
