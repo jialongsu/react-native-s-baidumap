@@ -238,6 +238,7 @@ class BaiduMapSearch: NSObject, BMKPoiSearchDelegate, BMKSuggestionSearchDelegat
         data["name"] = sugInfo.key
         data["key"] = sugInfo.key
         data["district"] = sugInfo.district
+        data["address"] = sugInfo.address
         data["city"] = sugInfo.city
         data["latitude"] = sugInfo.location.latitude
         data["longitude"] = sugInfo.location.longitude

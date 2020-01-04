@@ -11,6 +11,8 @@ import Foundation
 @objc(BaiduGeolocationModule)
 class BaiduGeolocationModule: RCTEventEmitter, BMKLocationManagerDelegate, BMKLocationAuthDelegate, BMKGeoCodeSearchDelegate {
   
+  var geoPrmResolve: RCTPromiseResolveBlock! //promise成功回调
+  var geoPrmReject: RCTPromiseRejectBlock! //promise失败回调
   var locationManager: BMKLocationManager?
   lazy var geoCodeSearch: BMKGeoCodeSearch = {
     //初始化BMKGeoCodeSearch实例
@@ -47,6 +49,9 @@ class BaiduGeolocationModule: RCTEventEmitter, BMKLocationManagerDelegate, BMKLo
     BMKLocationAuth.sharedInstance()?.checkPermision(withKey: key, authDelegate: self)
     //初始化BMKLocationManager的实例
      let manager = BMKLocationManager()
+     manager.coordinateType = BMKLocationCoordinateType.BMK09LL;
+     //设定定位的最小更新距离。默认为 kCLDistanceFilterNone。
+     manager.distanceFilter = 8
      //设置定位管理类实例的代理
      manager.delegate = self
      locationManager = manager;
@@ -79,7 +84,7 @@ class BaiduGeolocationModule: RCTEventEmitter, BMKLocationManagerDelegate, BMKLo
       case 3:
         coorType = BMKLocationCoordinateType.GCJ02
       default:
-        coorType = BMKLocationCoordinateType.WGS84
+        coorType = BMKLocationCoordinateType.BMK09LL
     }
     //设定定位坐标系类型，默认为 BMKLocationCoordinateTypeGCJ02
     manager?.coordinateType = coorType
@@ -136,7 +141,9 @@ class BaiduGeolocationModule: RCTEventEmitter, BMKLocationManagerDelegate, BMKLo
   /**
    *地理编码
   */
-   @objc func geocode(_ address: String, _ city: String) {
+   @objc func geocode(_ address: String, _ city: String, _ resolve:@escaping RCTPromiseResolveBlock, _ reject: @escaping RCTPromiseRejectBlock) {
+    geoPrmResolve = resolve;
+    geoPrmReject = reject;
     //初始化请求参数类BMKBMKGeoCodeSearchOption的实例
     let geoCodeOption = BMKGeoCodeSearchOption()
     /**
@@ -170,8 +177,9 @@ class BaiduGeolocationModule: RCTEventEmitter, BMKLocationManagerDelegate, BMKLo
   /**
    *反地理编码
   */
-   @objc func reverseGeoCode(_ lat: Double, _ lng: Double) {
-    
+   @objc func reverseGeoCode(_ lat: Double, _ lng: Double, _ resolve:@escaping RCTPromiseResolveBlock, _ reject: @escaping RCTPromiseRejectBlock) {
+    geoPrmResolve = resolve;
+    geoPrmReject = reject;
     //初始化请求参数类BMKReverseGeoCodeOption的实例
     let reverseGeoCodeOption = BMKReverseGeoCodeSearchOption()
     //待解析的经纬度坐标（必选）
@@ -198,10 +206,10 @@ class BaiduGeolocationModule: RCTEventEmitter, BMKLocationManagerDelegate, BMKLo
    @param manager 提供该定位结果的BMKLocationManager类的实例
    @param heading 设备的朝向结果
    */
-  func bmkLocationManager(_ manager: BMKLocationManager, didUpdate heading: CLHeading?) {
-      NSLog("用户方向更新")
-  }
-  
+//  func bmkLocationManager(_ manager: BMKLocationManager, didUpdate heading: CLHeading?) {
+//      NSLog("用户方向更新")
+//  }
+//  
   /**
    @brief 连续定位回调函数
    @param manager 定位 BMKLocationManager 类
@@ -244,7 +252,11 @@ class BaiduGeolocationModule: RCTEventEmitter, BMKLocationManagerDelegate, BMKLo
       data["level"] = result.level
       data["latitude"] = result.location.latitude
       data["longitude"] = result.location.longitude
-      sendJsEvent(name: "baiduMapGeocode", data: data);
+      geoPrmResolve(data);
+//      sendJsEvent(name: "baiduMapGeocode", data: data);
+    } else {
+      let res: [String : Any] = [ "code": -1, "msg": "Error:\(error)"];
+      geoPrmReject("-1", "Error:\(error)", NSError(domain: "", code: -1, userInfo: res));
     }
   }
   
@@ -272,7 +284,11 @@ class BaiduGeolocationModule: RCTEventEmitter, BMKLocationManagerDelegate, BMKLo
       data["street"] = addressDetail?.streetName
       data["countryCode"] = addressDetail?.countryCode
       data["town"] = addressDetail?.town
-      sendJsEvent(name: "baiduMapReverseGeoCode", data: data);
+      geoPrmResolve(data);
+//      sendJsEvent(name: "baiduMapReverseGeoCode", data: data);
+    } else {
+      let res: [String : Any] = [ "code": -1, "msg": "Error:\(error)"];
+      geoPrmReject("-1", "Error:\(error)", NSError(domain: "", code: -1, userInfo: res));
     }
   }
   

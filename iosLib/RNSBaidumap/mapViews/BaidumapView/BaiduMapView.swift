@@ -16,7 +16,7 @@ open class BaiduMapView: RCTViewManager{
   }
   
   override open class func requiresMainQueueSetup() -> Bool {
-    return true;
+    return false;
   }
   
 }

@@ -16,7 +16,7 @@ class RCTMarkerView: RCTViewManager{
   }
   
   override class func requiresMainQueueSetup() -> Bool {
-    return true;
+    return false;
   }
   
 }

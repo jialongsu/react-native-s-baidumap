@@ -1,5 +1,6 @@
 
 
+
 # react-native-s-baidumap
 百度地图 React Native 模块，同时支持ios和android，react native 0.60.0+。
 
@@ -63,6 +64,7 @@ cd ios && pod install
 **第三步：**
 等待安装成功后，进入ios工程文件夹，会看到一个.xcworkspace 结尾的文件 ，双击打开
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191227143620784.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaGFwcHlfbG9uZw==,size_16,color_FFFFFF,t_70)
+
 **第四步：**
 选中项目，右键添加文件
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191227143814712.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaGFwcHlfbG9uZw==,size_16,color_FFFFFF,t_70)
@@ -70,6 +72,26 @@ cd ios && pod install
 将整个RNSBaidumap文件夹导入。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191227171950125.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaGFwcHlfbG9uZw==,size_16,color_FFFFFF,t_70)
 **第五步：**
+需要添加桥接文件，选中项目右键，New File，选择h类型的头部文件创建，文件名为：你的项目名+-Bridging-Header，如：reactNativeSBaidumap-Bridging-Header。
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200104103849460.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaGFwcHlfbG9uZw==,size_16,color_FFFFFF,t_70)
+然后在该文件中添加以下代码：
+
+```js
+#import <React/RCTBridgeModule.h>
+#import <React/RCTViewManager.h>
+#import <React/RCTEventEmitter.h>
+#import <BaiduMapAPI_Base/BMKBaseComponent.h>//引入base相关所有的头文件
+#import <BaiduMapAPI_Map/BMKMapComponent.h>//引入地图功能所有的头文件
+#import <BaiduMapAPI_Search/BMKSearchComponent.h>//引入检索功能所有的头文件
+#import <BMKLocationkit/BMKLocationComponent.h> //定位头文件
+```
+
+
+**第六步：**
+配置桥接文件 ：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2020010410414597.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaGFwcHlfbG9uZw==,size_16,color_FFFFFF,t_70)
+
+**第七步：**
 在AppDelegate.m文件中添加百度地图配置
 在头部引入：
 
@@ -167,14 +189,12 @@ cd ios && pod install
 ## 地理编码
 |Method|Description  |Result|
 |--|--|--|
-| geocode(address, city) | 地理编码方法 | |
-| addListener(func) |地理编码成功监听 | {longitude, latitude}|
+| geocode(address, city) :Promise| 地理编码方法 | |
 
 ## 逆地理编码
 |Method|Description  |Result|
 |--|--|--|
-| reverseGeoCode(lat, lng) | 逆地理编码方法 | |
-| addListener(func) |逆地理编码成功监听 | geolocation result|
+| reverseGeoCode(lat, lng) :Promise | 逆地理编码方法 | |
 
 ## Search Methods
 ## POI检索
@@ -193,3 +213,5 @@ cd ios && pod install
 | **drivingRouteSearch**({startCity: 起点城市, startAddres: 起点位置, endCity: 终点城市, endAddres: 终点位置, city: 起点与终点是同一个城市, city, startCity, endCity同时使用，起点与终点都使用city, trafficPolicyType: 是否开起路况, drivingPolicyType: 驾车策略}): Promise | 驾车路线规划 | Route result|
 | **bikingRouteSearch**({startCity: 起点城市, startAddres: 起点位置, endCity: 终点城市, endAddres: 终点位置, city: 起点与终点是同一个城市, city, startCity, endCity同时使用，起点与终点都使用city, ridingType:  骑行类型（0：普通骑行模式，1：电动车模式）}): Promise | 骑行路线规划 | Route result|
 | **transitRoutePlan**({startCity: 起点城市, startAddres: 起点位置, endCity: 终点城市, endAddres: 终点位置, city: 起点与终点是同一个城市, city, startCity, endCity同时使用，起点与终点都使用city, policyType:  换乘策略}): Promise | 市内公交路线规划 | Route result|
+
+**具体API用法可以参考example。**

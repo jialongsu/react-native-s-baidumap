@@ -18,11 +18,23 @@
   RCT_EXTERN_METHOD(
     geocode:(NSString *)address
     :(NSString *)city
+    :(RCTPromiseResolveBlock)resolve
+    :(RCTPromiseRejectBlock)reject
   )
   RCT_EXTERN_METHOD(
     reverseGeoCode:(double *)lat
     :(double *)lng
+    :(RCTPromiseResolveBlock)resolve
+    :(RCTPromiseRejectBlock)reject
   )
+//  RCT_EXTERN_METHOD(
+//    geocode:(NSString *)address
+//    :(NSString *)city
+//  )
+//  RCT_EXTERN_METHOD(
+//    reverseGeoCode:(double *)lat
+//    :(double *)lng
+//  )
 
   + (BOOL)requiresMainQueueSetup{
     return NO;

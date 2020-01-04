@@ -462,55 +462,56 @@ class RoutePlanSearchModule: NSObject, BMKRouteSearchDelegate {
     let endNode: BMKPlanNode = BMKPlanNode();
     if((options["startLocation"] != nil) && (options["endLocation"] != nil)) {
       let startLocation = options["startLocation"] as! Dictionary<String, Double>
-      let endLocation = options["startLocation"] as! Dictionary<String, Double>
+      let endLocation = options["endLocation"] as! Dictionary<String, Double>
       startNode.pt = CLLocationCoordinate2D(latitude: CLLocationDegrees(startLocation["latitude"] ?? 0), longitude: CLLocationDegrees(startLocation["longitude"] ?? 0))
       endNode.pt = CLLocationCoordinate2D(latitude: CLLocationDegrees(endLocation["latitude"] ?? 0), longitude: CLLocationDegrees(endLocation["longitude"] ?? 0))
-    } else {
-      var startAddres: String = "";
-      var endAddres: String = "";
-      var startCity: String = "";
-      var endCity: String = "";
-      let isHasCity: Bool = options["city"] != nil
-      let isHasStartCity: Bool = options["startCity"] != nil
-      let isHasEndCity: Bool = options["endCity"] != nil
-      
-      if(options["startAddres"] != nil) {
-        startAddres = options["startAddres"] as! String;
-      }else{
-        msg = "startAddres参数未传入！";
-      }
-      if(options["endAddres"] != nil) {
-        endAddres = options["endAddres"] as! String;
-      }else{
-        msg = "endAddres参数未传入！";
-      }
-      if(isHasStartCity) {
-        startCity = options["startCity"] as! String;
-      }else{
-        msg = !isHasCity ? "startCity参数未传入, startCity与city需传入一个！" : "";
-      }
-      if(isHasEndCity) {
-        endCity = options["endCity"] as! String;
-      }else{
-        msg = !isHasCity ? "endCity参数未传入, endCity与city需传入一个！" : "";
-      }
-      if(isHasCity) {
-        let city:String = options["city"] as! String;
-        startCity = city;
-        endCity = city;
-        msg = "";
-      }else{
-        msg = !isHasEndCity || !isHasStartCity ? "city参数未传入, endCity、startCity与city需传入一组！" : "";
-      }
-      //起点名称
-      startNode.name = startAddres
-      //起点所在城市，注：cityName和cityID同时指定时，优先使用cityID
-      startNode.cityName = startCity
-      //终点名称
-      endNode.name = endAddres
-      //终点所在城市，注：cityName和cityID同时指定时，优先使用cityID
-      endNode.cityName = endCity
     }
+//    else {
+    var startAddres: String = "";
+    var endAddres: String = "";
+    var startCity: String = "";
+    var endCity: String = "";
+    let isHasCity: Bool = options["city"] != nil
+    let isHasStartCity: Bool = options["startCity"] != nil
+    let isHasEndCity: Bool = options["endCity"] != nil
+    
+    if(options["startAddres"] != nil) {
+      startAddres = options["startAddres"] as! String;
+    }else{
+      msg = "startAddres参数未传入！";
+    }
+    if(options["endAddres"] != nil) {
+      endAddres = options["endAddres"] as! String;
+    }else{
+      msg = "endAddres参数未传入！";
+    }
+    if(isHasStartCity) {
+      startCity = options["startCity"] as! String;
+    }else{
+      msg = !isHasCity ? "startCity参数未传入, startCity与city需传入一个！" : "";
+    }
+    if(isHasEndCity) {
+      endCity = options["endCity"] as! String;
+    }else{
+      msg = !isHasCity ? "endCity参数未传入, endCity与city需传入一个！" : "";
+    }
+    if(isHasCity) {
+      let city:String = options["city"] as! String;
+      startCity = city;
+      endCity = city;
+      msg = "";
+    }else{
+      msg = !isHasEndCity || !isHasStartCity ? "city参数未传入, endCity、startCity与city需传入一组！" : "";
+    }
+    //起点名称
+    startNode.name = startAddres
+    //起点所在城市，注：cityName和cityID同时指定时，优先使用cityID
+    startNode.cityName = startCity
+    //终点名称
+    endNode.name = endAddres
+    //终点所在城市，注：cityName和cityID同时指定时，优先使用cityID
+    endNode.cityName = endCity
+//    }
     if(msg != "") {
       let res: [String : Any] = [ "code": -1, "msg": "Error:\(msg)"];
       searchPrmReject("-1", "Error:\(msg)", NSError(domain: "", code: -1, userInfo: res));

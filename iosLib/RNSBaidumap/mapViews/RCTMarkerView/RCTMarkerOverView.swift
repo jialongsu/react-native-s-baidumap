@@ -63,7 +63,8 @@ open class RCTMarkerOverView: UIView{
     didSet {
       if(annotation?.annotationView != nil) {
         //设置是否显示infowind,
-        annotation?.annotationView?.setSelected(self.active, animated: false)
+        annotation?.annotationView?.isSelected = self.active;
+        annotation?.annotationView?.canShowCallout = self.active;
       }else{
         annotation?.active = self.active
       }
