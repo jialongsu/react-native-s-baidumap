@@ -1,12 +1,6 @@
 'use strict';
 import React, {Component} from 'react';
 import {StyleSheet, View, Button} from 'react-native';
-// import {
-//   walkingRouteSearch,
-//   drivingRouteSearch,
-//   bikingRouteSearch,
-//   transitRoutePlan,
-// } from './RoutePlanSearchModule';
 import {
   MapView,
   Marker,
@@ -54,11 +48,18 @@ export default class Page extends Component {
 
   onWalkingRoute = () => {
     walkingRouteSearch({
-      // startCity: '杭州',
+      startCity: '杭州',
       startAddres: '西湖',
-      // endCity: '杭州',
+      endCity: '杭州',
       endAddres: '博地中心',
-      city: '杭州',
+      startLocation: {
+        latitude: 30.201758579993438,
+        longitude: 120.24196537387117,
+      },
+      endLocation: {
+        latitude: 30.243286201021842,
+        longitude: 120.25870080552207,
+      },
     }).then(res => {
       console.log('walkingRouteSearch', res);
       this.groupData(res);
@@ -67,19 +68,18 @@ export default class Page extends Component {
 
   onDrivingRoute = () => {
     drivingRouteSearch({
-      // startCity: '杭州',
+      startCity: '杭州',
       startAddres: '西湖',
-      // endCity: '杭州',
-      city: '杭州',
+      endCity: '杭州',
       endAddres: '博地中心',
-      // startLocation: {
-      //   latitude: 30.201758579993438,
-      //   longitude: 120.24196537387117,
-      // },
-      // endLocation: {
-      //   latitude: 30.243286201021842,
-      //   longitude: 120.25870080552207,
-      // },
+      startLocation: {
+        latitude: 30.201758579993438,
+        longitude: 120.24196537387117,
+      },
+      endLocation: {
+        latitude: 30.243286201021842,
+        longitude: 120.25870080552207,
+      },
     }).then(res => {
       console.log('drivingRouteSearch', res);
       this.groupData(res);
@@ -92,6 +92,14 @@ export default class Page extends Component {
       startAddres: '西湖',
       endCity: '杭州',
       endAddres: '博地中心',
+      startLocation: {
+        latitude: 30.201758579993438,
+        longitude: 120.24196537387117,
+      },
+      endLocation: {
+        latitude: 30.243286201021842,
+        longitude: 120.25870080552207,
+      },
     }).then(res => {
       console.log('bikingRouteSearch', res);
       this.groupData(res);
@@ -103,14 +111,14 @@ export default class Page extends Component {
       city: '杭州',
       startAddres: '中栋国际',
       endAddres: '博地中心',
-      // startLocation: {
-      //   latitude: 30.201758579993438,
-      //   longitude: 120.24196537387117,
-      // },
-      // endLocation: {
-      //   latitude: 30.243286201021842,
-      //   longitude: 120.25870080552207,
-      // },
+      startLocation: {
+        latitude: 30.201758579993438,
+        longitude: 120.24196537387117,
+      },
+      endLocation: {
+        latitude: 30.243286201021842,
+        longitude: 120.25870080552207,
+      },
     }).then(res => {
       console.log('transitRoutePlan', res);
       this.groupData(res);

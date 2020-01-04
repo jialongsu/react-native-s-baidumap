@@ -9,7 +9,7 @@ import {StyleSheet, View, Button} from 'react-native';
 import {MapView, Marker, Geolocation} from 'react-native-s-baidumap';
 import riderIcon from './images/riderIcon.png';
 
-const {geolocation, geocodeModule, reverseGeoCodeModule} = Geolocation;
+const {geolocation, geocode, reverseGeoCode} = Geolocation;
 
 export default class App extends Component {
   state = {
@@ -48,20 +48,10 @@ export default class App extends Component {
         isShow: false,
       });
     });
-    //地理编码回调
-    this.geocodeListener = geocodeModule.addListener(res => {
-      console.log('geocodeModule.addListener', res);
-    });
-    //反地理编码回调
-    this.reverseGeoCodeListener = reverseGeoCodeModule.addListener(res => {
-      console.log('reverseGeoCodeModule.addListener', res);
-    });
   }
 
   componentWillUnmount() {
     this.geolocationListener.remove();
-    this.geocodeListener.remove();
-    this.reverseGeoCodeListener.remove();
     this.stopGeolocation();
   }
 
@@ -69,16 +59,18 @@ export default class App extends Component {
    *地理编码
    * @memberof App
    */
-  geocode = () => {
-    geocodeModule.geocode('利一家园', '杭州');
+  geocode = async () => {
+    const res = await geocode('利一家园', '杭州');
+    console.log('addListener', res);
   };
 
   /**
    *反地理编码
    * @memberof App
    */
-  reverseGeoCode = () => {
-    reverseGeoCodeModule.reverseGeoCode(30.23954372829861, 120.26289523654513);
+  reverseGeoCode = async () => {
+    const res = await reverseGeoCode(30.23954372829861, 120.26289523654513);
+    console.log('reverseGeoCode', res);
   };
 
   /**
