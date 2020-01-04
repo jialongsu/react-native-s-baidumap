@@ -71,6 +71,7 @@ cd ios && pod install
 点击找到本项目node_modules下的react-native-s-baidumap -> iosLib -> RNSBaidumap,
 将整个RNSBaidumap文件夹导入。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191227171950125.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaGFwcHlfbG9uZw==,size_16,color_FFFFFF,t_70)
+
 **第五步：**
 需要添加桥接文件，选中项目右键，New File，选择h类型的头部文件创建，文件名为：你的项目名+-Bridging-Header，如：reactNativeSBaidumap-Bridging-Header。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200104103849460.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaGFwcHlfbG9uZw==,size_16,color_FFFFFF,t_70)
