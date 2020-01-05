@@ -21,6 +21,14 @@ class BaiduMapOverView: BMKMapView, BMKMapViewDelegate{
   @objc public var onMarkerDrag: RCTBubblingEventBlock!
   @objc public var onMarkerDragEnd: RCTBubblingEventBlock!
   
+  lazy var userLocation: BMKUserLocation = {
+    return BMKUserLocation()
+  }()
+  
+  lazy var locationViewDisplayParam: BMKLocationViewDisplayParam = {
+    return BMKLocationViewDisplayParam()
+  }()
+  
   public override init(frame: CGRect) {
     super.init(frame: CGRect.zero)
     self.delegate = self;
@@ -139,6 +147,49 @@ class BaiduMapOverView: BMKMapView, BMKMapViewDelegate{
       }
     };
     self.setCustomMapStyleEnable(isEnable)
+  }
+  
+  @objc
+  func setLocationEnabled(_ locationEnabled: Bool) -> Void {
+    self.showsUserLocation = locationEnabled;
+  }
+  
+  @objc
+  func setMyLocationData(_ myLocationData: Dictionary<String, Any>!) -> Void {
+    if(myLocationData["latitude"] != nil && myLocationData["longitude"] != nil) {
+      let latitude: Double = myLocationData?["latitude"] as! Double;
+      let longitude: Double = myLocationData?["longitude"] as! Double;
+      userLocation.location = CLLocation(latitude: latitude, longitude: longitude);
+      self.updateLocationData(userLocation)
+      if(myLocationData["locationMode"] != nil) {
+//        var fillColor: String = "";
+//        var strokeColor: String = "";
+        let locationMode: Int = myLocationData?["locationMode"] as! Int;
+        var userTrackingMode = BMKUserTrackingModeNone;
+        switch locationMode {
+        case 1:
+          userTrackingMode = BMKUserTrackingModeFollow
+        case 2:
+          userTrackingMode = BMKUserTrackingModeFollowWithHeading
+        default:
+          userTrackingMode = BMKUserTrackingModeNone;
+        }
+        self.userTrackingMode = userTrackingMode
+        
+//        if(myLocationData["fillColor"] != nil) {
+//          fillColor = myLocationData["fillColor"] as! String;
+//          //设置精度圈填充颜色
+//          locationViewDisplayParam.accuracyCircleFillColor = UIColor.colorWithHex(hexStr: fillColor);
+//        }
+//        if(myLocationData["strokeColor"] != nil) {
+//          strokeColor = myLocationData["strokeColor"] as! String;
+//          //设置精度圈填充颜色
+//          locationViewDisplayParam.accuracyCircleStrokeColor = UIColor.colorWithHex(hexStr: strokeColor);
+//        }
+//        locationViewDisplayParam.isAccuracyCircleShow = true;
+//        self.updateLocationView(with: locationViewDisplayParam)
+      }
+    }
   }
   
   public func mapView(_ mapView: BMKMapView!, onClickedMapBlank coordinate: CLLocationCoordinate2D) {

@@ -127,6 +127,7 @@ cd ios && pod install
 | isBaiduHeatMapEnabled | bool |false |显示百度热力图层|
 | baiduMapType | number |1 |地图类型 1: 标准地图 2: 卫星地图 3:空白地图|
 | locationEnabled | bool |false |显示当前定位位置|
+| myLocationData | object |{} |显示当前定位数据, 使用该属性前locationEnabled必须设置为true|
 | zoom | number |18 |地图缩放级别[4,21]|
 | zoomMinLevel | number |4 |地图最小缩放级别，最小4|
 | zoomMaxLevel | number |21 |地图最大缩放级别，最大21|

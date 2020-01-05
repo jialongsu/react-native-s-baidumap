@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Animatable;
 import android.net.Uri;
+import android.util.Log;
 import android.widget.Button;
 
 import com.baidu.mapapi.map.BaiduMap;
@@ -80,6 +81,7 @@ public class OverlayMarker extends ReactViewGroup implements OverlayView {
                                 if (bitmap != null) {
                                     bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
                                     iconBitmapDescriptor = BitmapDescriptorFactory.fromBitmap(bitmap);
+                                    setIconHeight(iconBitmapDescriptor.getBitmap().getHeight());
                                 }
                             }
                         }
@@ -288,7 +290,7 @@ public class OverlayMarker extends ReactViewGroup implements OverlayView {
     }
 
     public int getInfoWindowYOffset() {
-        int iconHeight = getIconHeight() + 5;
+        int iconHeight = getIconHeight();
         this.infoWindowYOffset = this.infoWindowYOffset + -iconHeight;
         return this.infoWindowYOffset;
     }
@@ -316,6 +318,7 @@ public class OverlayMarker extends ReactViewGroup implements OverlayView {
                         }
                     }
                     marker.setIcon(getIcon());
+                    createInfoWindow();
                 }
             }).start();
         }

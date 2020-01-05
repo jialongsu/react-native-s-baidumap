@@ -1,7 +1,5 @@
 package com.rn.s.baidumap.modules;
 
-import android.util.Log;
-
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
@@ -79,7 +77,7 @@ public class GeolocationModule extends ReactContextBaseJavaModule implements MKO
                 data.putString("cityCode", location.getCityCode());
                 data.putString("country", location.getCountry());
                 data.putString("countryCode", location.getCountryCode());
-                data.putString("Province", location.getProvince());
+                data.putString("province", location.getProvince());
                 data.putString("district", location.getDistrict());
                 data.putInt("locationWhere", location.getLocationWhere());
                 data.putString("street", location.getStreet());

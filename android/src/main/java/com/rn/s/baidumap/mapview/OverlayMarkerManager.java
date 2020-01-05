@@ -38,7 +38,9 @@ public class OverlayMarkerManager extends SimpleViewManager<OverlayMarker> {
     @ReactProp(name = "icon")
     public void setIcon(OverlayMarker overlayMarker, ReadableMap map) {
         overlayMarker.setIcon(map.getString("uri"));
-        overlayMarker.setIconHeight(map.getInt("height"));
+        if(map.hasKey("height")) {
+            overlayMarker.setIconHeight(map.getInt("height"));
+        }
     }
 
     /**

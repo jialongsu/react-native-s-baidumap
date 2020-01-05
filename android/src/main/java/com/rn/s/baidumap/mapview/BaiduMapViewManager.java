@@ -1,6 +1,7 @@
 package com.rn.s.baidumap.mapview;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 
@@ -12,6 +13,8 @@ import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
+import com.baidu.mapapi.map.MyLocationConfiguration;
+import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.UiSettings;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.model.LatLngBounds;
@@ -24,7 +27,6 @@ import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.facebook.react.uimanager.annotations.ReactPropGroup;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.rn.s.baidumap.utils.Utils;
 import com.rn.s.baidumap.view.OverlayMarker;
@@ -49,6 +51,8 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> implements Li
     BaiduMap mBaiduMap;
     MapView mapView;
     ThemedReactContext mReactContext;
+    // 定位图层显示方式
+    private MyLocationConfiguration.LocationMode mCurrentMode;
     public HashMap<String, OverlayMarker> markerMap = new HashMap<String, OverlayMarker>();
     private static final int SET_MAP_CENTER = 0;
     private static final int SET_MAP_ZOOM = 1;
@@ -63,6 +67,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> implements Li
         mapView = new MapView(reactContext);
         mBaiduMap = mapView.getMap();
         mReactContext = reactContext;
+        mCurrentMode = MyLocationConfiguration.LocationMode.NORMAL;
         return mapView;
     }
 
@@ -140,6 +145,58 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> implements Li
     @ReactProp(name="locationEnabled", defaultBoolean = false)
     public void setLocationEnabled(MapView mapView, boolean enabled) {
         mapView.getMap().setMyLocationEnabled(enabled);
+    }
+
+    @ReactProp(name="myLocationData")
+    public void setMyLocationData(MapView mapView, ReadableMap myLocationData) {
+        if(myLocationData.hasKey("radius") && myLocationData.hasKey("direction")
+        && myLocationData.hasKey("latitude") && myLocationData.hasKey("longitude")) {
+            int radius = myLocationData.getInt("radius");
+            int direction = myLocationData.getInt("direction");
+            double latitude = myLocationData.getDouble("latitude");
+            double longitude = myLocationData.getDouble("longitude");
+            MyLocationData locData = new MyLocationData.Builder()
+                    .accuracy(radius)
+                    // 此处设置开发者获取到的方向信息，顺时针0-360
+                    .direction(direction)
+                    .latitude(latitude)
+                    .longitude(longitude)
+                    .build();
+            mapView.getMap().setMyLocationData(locData);
+            //设置模式
+            if(myLocationData.hasKey("locationMode")) {
+                int newFillColor = 4521984;
+                int newStrokeColor = 4653056;
+                int locationMode = 0;
+                locationMode = myLocationData.getInt("locationMode");
+                switch (locationMode) {
+                    case 1:
+                        mCurrentMode = MyLocationConfiguration.LocationMode.FOLLOWING;
+                        break;
+                    case 2:
+                        mCurrentMode = MyLocationConfiguration.LocationMode.COMPASS;
+                        break;
+                    default:
+                        mCurrentMode = MyLocationConfiguration.LocationMode.NORMAL;
+                        break;
+                }
+                if(myLocationData.hasKey("fillColor")) {
+                    String fillColor = myLocationData.getString("fillColor");
+                    newFillColor = Color.parseColor(fillColor);
+                }
+                if(myLocationData.hasKey("strokeColor")) {
+                    String strokeColor = myLocationData.getString("strokeColor");
+                    newStrokeColor = Color.parseColor(strokeColor);
+                }
+                mBaiduMap.setMyLocationConfiguration(new MyLocationConfiguration(mCurrentMode,true,null,
+                        newFillColor, newStrokeColor));
+                MapStatus.Builder builder = new MapStatus.Builder();
+                if(myLocationData.hasKey("overlook")) {
+                    builder.overlook(myLocationData.getInt("overlook"));
+                }
+                mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+            }
+        }
     }
 
     @ReactProp(name="centerLatLng")

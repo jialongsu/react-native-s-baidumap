@@ -17,6 +17,7 @@ export default class App extends Component {
       latitude: 39.913607,
       longitude: 116.404844,
     },
+    myLocationData: {},
     isShow: true,
   };
 
@@ -39,11 +40,16 @@ export default class App extends Component {
     //定位回调
     this.geolocationListener = geolocation.addListener(res => {
       console.log('location.addListener', res);
-      const {latitude, longitude} = res;
+      const {latitude, longitude, direction, radius} = res;
       this.setState({
-        location: {
+        myLocationData: {
+          direction,
+          radius,
           latitude,
           longitude,
+          locationMode: 2,
+          fillColor: '#FF6A07',
+          strokeColor: '#000000',
         },
         isShow: false,
       });
@@ -94,7 +100,7 @@ export default class App extends Component {
   };
 
   render() {
-    const {location, isShow} = this.state;
+    const {location, isShow, myLocationData} = this.state;
 
     return (
       <View style={styles.container}>
@@ -123,21 +129,21 @@ export default class App extends Component {
         <MapView
           ref={this.setMapView}
           style={styles.map}
-          zoom={8}
+          zoom={10}
           zoomMaxLevel={18}
+          locationEnabled
+          myLocationData={myLocationData}
           centerLatLng={location}>
           <Marker
             title={'Marker'}
             active={true}
             icon={riderIcon}
-            // icon={'start_mark'}
             location={location}
-            infoWindowYOffset={-90}
+            // infoWindowYOffset={-90}
           />
           <Marker
             title={isShow ? 'Marker2' : 'Marker2-isShow'}
             active={true}
-            // icon={'end_mark'}
             icon={
               'https://dlm-images.oss-cn-hangzhou.aliyuncs.com/6e39c0b3a8b447c588be6c22bf13b908'
             }
@@ -145,7 +151,7 @@ export default class App extends Component {
               latitude: 38.914607,
               longitude: 116.406844,
             }}
-            infoWindowYOffset={-80}
+            // infoWindowYOffset={-80}
           />
         </MapView>
       </View>

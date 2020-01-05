@@ -26,6 +26,8 @@ RCT_EXPORT_VIEW_PROPERTY(scrollGesturesEnabled, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(rotateGesturesEnabled, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(overlookingGesturesEnabled, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(mapCustomStyleFileName, NSString)
+RCT_EXPORT_VIEW_PROPERTY(locationEnabled, BOOL)
+RCT_EXPORT_VIEW_PROPERTY(myLocationData, NSDictionary)
 
 RCT_EXPORT_VIEW_PROPERTY(onMapClick, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onMapLongClick, RCTBubblingEventBlock)
