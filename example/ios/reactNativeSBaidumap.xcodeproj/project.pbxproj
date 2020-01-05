@@ -32,6 +32,8 @@
 		4B54302E23B602F6000495F3 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54301E23B602F6000495F3 /* CustomAnnotation.swift */; };
 		4B54302F23B602F6000495F3 /* RCTMarkerViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B54301F23B602F6000495F3 /* RCTMarkerViewManager.m */; };
 		4B54303023B602F6000495F3 /* RCTMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54302023B602F6000495F3 /* RCTMarkerView.swift */; };
+		4B724EBB23C1E5E6007AA2AC /* OfflineMapModuleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B724EBA23C1E5E6007AA2AC /* OfflineMapModuleManager.m */; };
+		4B724EBD23C1E613007AA2AC /* OfflineMapModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B724EBC23C1E613007AA2AC /* OfflineMapModule.swift */; };
 		4B981CB523B76F0F00080255 /* RoutePlanSearchModuleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B981CB423B76F0F00080255 /* RoutePlanSearchModuleManager.m */; };
 		4B981CB723B76F3F00080255 /* RoutePlanSearchModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B981CB623B76F3F00080255 /* RoutePlanSearchModule.swift */; };
 		4B981CC223B864FA00080255 /* custom_map_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B981CC123B864FA00080255 /* custom_map_config.json */; };
@@ -92,6 +94,8 @@
 		4B54301E23B602F6000495F3 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		4B54301F23B602F6000495F3 /* RCTMarkerViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTMarkerViewManager.m; sourceTree = "<group>"; };
 		4B54302023B602F6000495F3 /* RCTMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCTMarkerView.swift; sourceTree = "<group>"; };
+		4B724EBA23C1E5E6007AA2AC /* OfflineMapModuleManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OfflineMapModuleManager.m; sourceTree = "<group>"; };
+		4B724EBC23C1E613007AA2AC /* OfflineMapModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineMapModule.swift; sourceTree = "<group>"; };
 		4B981CB423B76F0F00080255 /* RoutePlanSearchModuleManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoutePlanSearchModuleManager.m; sourceTree = "<group>"; };
 		4B981CB623B76F3F00080255 /* RoutePlanSearchModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePlanSearchModule.swift; sourceTree = "<group>"; };
 		4B981CC123B864FA00080255 /* custom_map_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = custom_map_config.json; path = ../../../../../../Downloads/BaiduMap_IOSSDK_v5.1.0_Sample/BMKMapSwiftDemo/BMKSwiftDemo/Resources/custom_map_config.json; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 				4B54301123B602F6000495F3 /* BaiduMapSearchManager.m */,
 				4B981CB423B76F0F00080255 /* RoutePlanSearchModuleManager.m */,
 				4B981CB623B76F3F00080255 /* RoutePlanSearchModule.swift */,
+				4B724EBA23C1E5E6007AA2AC /* OfflineMapModuleManager.m */,
+				4B724EBC23C1E613007AA2AC /* OfflineMapModule.swift */,
 			);
 			path = mapModules;
 			sourceTree = "<group>";
@@ -685,6 +691,7 @@
 				4B54303023B602F6000495F3 /* RCTMarkerView.swift in Sources */,
 				4B981CB523B76F0F00080255 /* RoutePlanSearchModuleManager.m in Sources */,
 				4B54302323B602F6000495F3 /* BaiduGeolocationModule.swift in Sources */,
+				4B724EBB23C1E5E6007AA2AC /* OfflineMapModuleManager.m in Sources */,
 				4B54302E23B602F6000495F3 /* CustomAnnotation.swift in Sources */,
 				4B54302C23B602F6000495F3 /* CustomBMKPolyline.swift in Sources */,
 				4B54302123B602F6000495F3 /* UIColor.swift in Sources */,
@@ -695,6 +702,7 @@
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				4B54302923B602F6000495F3 /* RCTPolylineOverView.swift in Sources */,
 				4B54302A23B602F6000495F3 /* RCTPolylineViewManager.m in Sources */,
+				4B724EBD23C1E613007AA2AC /* OfflineMapModule.swift in Sources */,
 				4B54302523B602F6000495F3 /* BaiduMapSearchManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

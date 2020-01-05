@@ -4,11 +4,6 @@ import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.CoordType;
-import com.baidu.mapapi.map.offline.MKOLSearchRecord;
-import com.baidu.mapapi.map.offline.MKOLUpdateElement;
-import com.baidu.mapapi.map.offline.MKOfflineMap;
-import com.baidu.mapapi.map.offline.MKOfflineMapListener;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.baidu.mapapi.search.core.SearchResult;
@@ -28,7 +23,6 @@ import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,22 +33,17 @@ import androidx.annotation.Nullable;
  * Created by sujialong on 2019/7/10.
  */
 
-public class GeolocationModule extends ReactContextBaseJavaModule implements MKOfflineMapListener {
+public class GeolocationModule extends ReactContextBaseJavaModule {
 
     private Promise geoPromise;
     private ReactApplicationContext mReactContext;
     private LocationClient mLocationClient = null;
     private LocationClientOption mClientOption = null;
     private GeoCoder mCoder = GeoCoder.newInstance();;
-    private MKOfflineMap mOffline = null;
-    private boolean isDownLoadedOfflineMap = false;
-    private boolean downLoadOfflineMap = true;
 
     public GeolocationModule(ReactApplicationContext reactContext) {
         super(reactContext);
         mReactContext = reactContext;
-        mOffline = new MKOfflineMap();
-        mOffline.init(this);
         mLocationClient = new LocationClient(reactContext);
         mClientOption = new LocationClientOption();
         mClientOption.setCoorType("bd09ll");
@@ -149,12 +138,6 @@ public class GeolocationModule extends ReactContextBaseJavaModule implements MKO
                         }
                         data.putArray("poiList", list);
                     }
-
-                    //下载离线地图
-                    if(!isDownLoadedOfflineMap && downLoadOfflineMap) {
-                        downLoadOfflineMap(addressComponent.city);
-                    }
-
                     geoPromise.resolve(data);
                 }
 //                onSendEvent("baiduMapReverseGeoCode", data);
@@ -212,9 +195,6 @@ public class GeolocationModule extends ReactContextBaseJavaModule implements MKO
         if(options.hasKey("openGps")) {
             openGps = options.getBoolean("openGps");
         }
-        if(options.hasKey("downLoadOfflineMap")) {
-            downLoadOfflineMap = options.getBoolean("downLoadOfflineMap");
-        }
         clientOption.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
         clientOption.setCoorType(coorType);
         clientOption.setScanSpan(scanSpan);
@@ -254,49 +234,9 @@ public class GeolocationModule extends ReactContextBaseJavaModule implements MKO
         mCoder.reverseGeoCode(new ReverseGeoCodeOption().location(new LatLng(lat, lng)));
     }
 
-    public void downLoadOfflineMap(String cityName) {
-        ArrayList<MKOLUpdateElement> elements = mOffline.getAllUpdateInfo();
-        ArrayList<MKOLSearchRecord> records = mOffline.searchCity(cityName);
-        boolean isDownLoaded = false;
-
-        if(elements != null && elements.size() > 0) {
-            for (MKOLUpdateElement element : elements){
-                if(element.cityName.equals(cityName)) {
-                    isDownLoaded = true;
-                }
-            }
-        }
-        if(records != null && records.size() > 0 && !isDownLoaded) {
-            mOffline.start(records.get(0).cityID);
-        }
-    }
-
     public void onSendEvent(String eventName, WritableMap writableMap) {
         mReactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
                 .emit(eventName, writableMap);
     }
 
-    @Override
-    public void onGetOfflineMapState(int type, int state) {
-        switch (type) {
-            case MKOfflineMap.TYPE_DOWNLOAD_UPDATE: {
-                MKOLUpdateElement update = mOffline.getUpdateInfo(state);
-                // 处理下载进度更新提示
-                if (update != null) {
-//                    Log.d("OfflineDemo", String.format("%s : %d%%", update.cityName, update.ratio));
-                    isDownLoadedOfflineMap = true;
-                }
-            }
-            break;
-            case MKOfflineMap.TYPE_NEW_OFFLINE:
-                // 有新离线地图安装
-                break;
-            case MKOfflineMap.TYPE_VER_UPDATE:
-                // 版本更新提示
-                // MKOLUpdateElement e = mOffline.getUpdateInfo(state);
-                break;
-            default:
-                break;
-        }
-    }
 }

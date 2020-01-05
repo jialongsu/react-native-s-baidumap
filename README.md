@@ -1,6 +1,7 @@
 
 
 
+
 # react-native-s-baidumap
 百度地图 React Native 模块，同时支持ios和android，react native 0.60.0+。
 
@@ -8,7 +9,7 @@
 - 基础定位 ✅
 - 基础地图 ✅
 - 个性化地图 ✅
-- 离线地图
+- 离线地图 ✅
 - 绘制点标记 ✅
 - 绘制线 ✅
 - 绘制弧线和面
@@ -21,8 +22,9 @@
 - 路线规划 ✅
 
 ## DEMO预览
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191229135710379.gif)
+![预览](https://img-blog.csdnimg.cn/20191229135710379.gif)
 
+![百度离线地图](https://img-blog.csdnimg.cn/20200105192612231.gif)
 
 ## 安装
 
@@ -215,5 +217,18 @@ cd ios && pod install
 | **drivingRouteSearch**({startCity: 起点城市, startAddres: 起点位置, endCity: 终点城市, endAddres: 终点位置, city: 起点与终点是同一个城市, city, startCity, endCity同时使用，起点与终点都使用city, trafficPolicyType: 是否开起路况, drivingPolicyType: 驾车策略}): Promise | 驾车路线规划 | Route result|
 | **bikingRouteSearch**({startCity: 起点城市, startAddres: 起点位置, endCity: 终点城市, endAddres: 终点位置, city: 起点与终点是同一个城市, city, startCity, endCity同时使用，起点与终点都使用city, ridingType:  骑行类型（0：普通骑行模式，1：电动车模式）}): Promise | 骑行路线规划 | Route result|
 | **transitRoutePlan**({startCity: 起点城市, startAddres: 起点位置, endCity: 终点城市, endAddres: 终点位置, city: 起点与终点是同一个城市, city, startCity, endCity同时使用，起点与终点都使用city, policyType:  换乘策略}): Promise | 市内公交路线规划 | Route result|
+
+## OfflineMap Methods
+
+|Method|Description  |Result|
+|--|--|--|
+| start(cityId)  |开始下载离线地图 | |
+| stop(cityId)  |暂停下载离线地图 | |
+| remove(cityId)  |删除已下载的离线地图 | |
+| update(cityId)  |更新已下载的离线地图 | |
+| getHotCityList():Promise  |获取热门城市 | {code,list:[]}|
+| searchCity():Promise  |搜索城市 |{code,list:[]} |
+| getOfflineAllCityList() :Promise |获取所有支持离线地图的城市 |{code,list:[]} |
+| getDownloadedCityList() :Promise |获取已下载过的离线地图 |{code,list:[]} |
 
 **具体API用法可以参考example。**

@@ -7,6 +7,7 @@ import MapDemo from './mapDemo';
 import GeolocationDem from './geolocationDemo';
 import SearchDemo from './searchDemo';
 import RoutePlanSearchDemo from './routePlanSearchDemo';
+import OfflineMapDemo from './offlineMapDemo';
 
 const AppNavigator = createStackNavigator(
   {
@@ -24,6 +25,9 @@ const AppNavigator = createStackNavigator(
     },
     RoutePlanSearchDemo: {
       screen: RoutePlanSearchDemo,
+    },
+    OfflineMapDemo: {
+      screen: OfflineMapDemo,
     },
   },
   {

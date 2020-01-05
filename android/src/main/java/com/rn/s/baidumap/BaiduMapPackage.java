@@ -12,6 +12,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
+import com.rn.s.baidumap.modules.OfflineMapModule;
 import com.rn.s.baidumap.modules.RoutePlanSearchModule;
 
 import java.util.Arrays;
@@ -31,7 +32,8 @@ public class BaiduMapPackage implements ReactPackage {
         return Arrays.<NativeModule>asList(
             new GeolocationModule(reactContext),
             new BaiduMapSearchModule(reactContext),
-            new RoutePlanSearchModule(reactContext)
+            new RoutePlanSearchModule(reactContext),
+            new OfflineMapModule(reactContext)
         );
     }
 
