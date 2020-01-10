@@ -59,6 +59,7 @@ public class OverlayMarker extends ReactViewGroup implements OverlayView {
     private InfoWindow mInfoWindow;
     private BaiduMap mBaiduMap;
     private int iconHeight = 0;
+    private float scale = 1;
 
     private DataSource<CloseableReference<CloseableImage>> dataSource;
     private volatile boolean loadingImage = false;
@@ -115,6 +116,17 @@ public class OverlayMarker extends ReactViewGroup implements OverlayView {
         if(mInfoWindow != null && active) {
             createInfoWindow();
         }
+    }
+
+    public void setScale(float scale) {
+        this.scale = scale;
+        if(marker != null) {
+            marker.setScale(scale);
+        }
+    }
+
+    public float getScale() {
+        return this.scale;
     }
 
     public void setZIndex(int zIndex) {
@@ -317,6 +329,7 @@ public class OverlayMarker extends ReactViewGroup implements OverlayView {
                             break;
                         }
                     }
+                    marker.setScale(getScale());
                     marker.setIcon(getIcon());
                     createInfoWindow();
                 }
@@ -334,6 +347,8 @@ public class OverlayMarker extends ReactViewGroup implements OverlayView {
                 .draggable(getDraggable())
                 .position(getPosition())
                 .zIndex(getZIndex())
+                .scaleX(getScale())
+                .scaleY(getScale())
                 .icon(getIcon());
         marker = (Marker) baiduMap.addOverlay(markerOptions);
         createInfoWindow();

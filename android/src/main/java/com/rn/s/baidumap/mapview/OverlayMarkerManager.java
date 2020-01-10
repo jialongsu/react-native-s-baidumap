@@ -104,6 +104,11 @@ public class OverlayMarkerManager extends SimpleViewManager<OverlayMarker> {
         overlayMarker.setZIndex(zIndex);
     }
 
+    @ReactProp(name = "scale", defaultFloat = 1)
+    public void setScale(OverlayMarker overlayMarker, float scale) {
+        overlayMarker.setScale(scale);
+    }
+
     /**
      * InfoWindow的YOffset偏移
      * @param overlayMarker

@@ -167,6 +167,7 @@ cd ios && pod install
 | draggable | bool |false|是否可拖拽|
 | active | bool |false|是否显示infowind|
 | infoWindowYOffset | number |0|infowind y轴偏移,正数向下移动，负数向上移动|
+| scale | number |1|icon缩放大小, 仅android|
 | perspective | bool |false|是否开启近大远小效果, 仅android|
 | alpha | number |0|透明度, 仅android|
 | rotate | number |0|旋转角度, 仅android|
