@@ -12,6 +12,9 @@ extension UIColor{
     class func colorWithHex(hexStr:String) -> UIColor{
         return UIColor.colorWithHex(hexStr: hexStr, alpha: 1)
     }
+    class func colorWithHexAlpha(hexStr:String, alpha: Float) -> UIColor{
+        return UIColor.colorWithHex(hexStr: hexStr, alpha: alpha)
+    }
 }
 
 extension UIColor{

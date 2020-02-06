@@ -228,6 +228,86 @@ export interface PolylineProps extends ViewStyle {
 }
 
 /**
+ * Arc view
+ */
+export class Arc extends Component<ArcProps> {}
+
+export interface ArcProps extends ViewStyle {
+  /**
+   *弧线坐标点列表
+   */
+  points: LatLang[];
+  /**
+   *颜色
+   */
+  color?: string;
+  /**
+   *宽度
+   */
+  width?: number;
+}
+
+/**
+ * Circle view
+ */
+export class Circle extends Component<CircleProps> {}
+
+export interface CircleProps extends ViewStyle {
+  /**
+   *圆形中点
+   */
+  circleCenter: LatLang;
+  /**
+   *颜色
+   */
+  color?: string;
+  /**
+   *边框宽度
+   */
+  width?: number;
+  /**
+   *圆形半径
+   */
+  radius?: number;
+  /**
+  *圆形背景颜色
+  */
+  fillColor?: string,
+  /**
+   *圆形背景颜色透明度，仅ios
+  */
+  fillColorAlpha?: number,
+}
+
+/**
+ * Polygon view
+ */
+export class Polygon extends Component<PolygonProps> {}
+
+export interface PolygonProps extends ViewStyle {
+  /**
+   *多边形坐标点列表
+   */
+  points: LatLang[];
+  /**
+   *颜色
+   */
+  color?: string;
+  /**
+   *边框宽度
+   */
+  width?: number;
+  /**
+   *圆形背景颜色
+   */
+  fillColor?: string;
+  /**
+   *圆形背景颜色透明度，仅ios
+  */
+  fillColorAlpha?: number,
+}
+
+/**
  * 搜索 Api
  */
 export const Search: {

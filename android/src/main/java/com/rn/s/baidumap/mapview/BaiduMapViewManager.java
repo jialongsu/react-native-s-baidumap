@@ -29,6 +29,7 @@ import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.rn.s.baidumap.utils.Utils;
+import com.rn.s.baidumap.view.OverlayArc;
 import com.rn.s.baidumap.view.OverlayMarker;
 import com.rn.s.baidumap.view.OverlayView;
 

@@ -3,7 +3,10 @@ package com.rn.s.baidumap;
 import android.os.Looper;
 
 import com.rn.s.baidumap.mapview.BaiduMapViewManager;
+import com.rn.s.baidumap.mapview.OverlayArcManager;
+import com.rn.s.baidumap.mapview.OverlayCircleManager;
 import com.rn.s.baidumap.mapview.OverlayMarkerManager;
+import com.rn.s.baidumap.mapview.OverlayPolygonManager;
 import com.rn.s.baidumap.mapview.OverlayPolylineManager;
 import com.rn.s.baidumap.modules.BaiduMapSearchModule;
 import com.rn.s.baidumap.modules.GeolocationModule;
@@ -42,7 +45,10 @@ public class BaiduMapPackage implements ReactPackage {
         return Arrays.<ViewManager>asList(
             new BaiduMapViewManager(),
             new OverlayMarkerManager(),
-            new OverlayPolylineManager()
+            new OverlayPolylineManager(),
+            new OverlayArcManager(),
+            new OverlayCircleManager(),
+            new OverlayPolygonManager()
         );
     }
 

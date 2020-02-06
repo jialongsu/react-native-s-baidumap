@@ -2,7 +2,7 @@
 
 
 
-# react-native-s-baidumap
+# [react-native-s-baidumap](https://github.com/1035901787/react-native-s-baidumap)
 百度地图 React Native 模块，同时支持ios和android，react native 0.60.0+。
 
 支持模块：
@@ -12,7 +12,7 @@
 - 离线地图 ✅
 - 绘制点标记 ✅
 - 绘制线 ✅
-- 绘制弧线和面
+- 绘制弧线和面 ✅
 - 自定义Infowindow
 - 点聚合
 - 绘制overlay
@@ -22,9 +22,12 @@
 - 路线规划 ✅
 
 ## DEMO预览
-![预览](https://img-blog.csdnimg.cn/20191229135710379.gif)
+![预览](https://user-gold-cdn.xitu.io/2020/2/6/17019d47a68789f5?w=211&h=420&f=gif&s=4569699)
 
-![百度离线地图](https://img-blog.csdnimg.cn/20200105192612231.gif)
+![百度离线地图](https://user-gold-cdn.xitu.io/2020/2/6/17019d47a75ed417?w=212&h=419&f=gif&s=303162)
+
+
+![绘制弧线和面](https://user-gold-cdn.xitu.io/2020/2/6/17019e084a428bff?w=296&h=586&f=jpeg&s=55839)
 
 ## 安装
 
@@ -65,18 +68,18 @@ cd ios && pod install
 ```
 **第三步：**
 等待安装成功后，进入ios工程文件夹，会看到一个.xcworkspace 结尾的文件 ，双击打开
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191227143620784.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaGFwcHlfbG9uZw==,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://user-gold-cdn.xitu.io/2020/2/6/17019d47a7f63d7e?w=838&h=626&f=png&s=153023)
 
 **第四步：**
 选中项目，右键添加文件
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191227143814712.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaGFwcHlfbG9uZw==,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://user-gold-cdn.xitu.io/2020/2/6/17019d47a8c128e2?w=1032&h=1166&f=png&s=1325061)
 点击找到本项目node_modules下的react-native-s-baidumap -> iosLib -> RNSBaidumap,
 将整个RNSBaidumap文件夹导入。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191227171950125.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaGFwcHlfbG9uZw==,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://user-gold-cdn.xitu.io/2020/2/6/17019d47a944bd30?w=1564&h=1360&f=png&s=754858)
 
 **第五步：**
 需要添加桥接文件，选中项目右键，New File，选择h类型的头部文件创建，文件名为：你的项目名+-Bridging-Header，如：reactNativeSBaidumap-Bridging-Header。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200104103849460.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaGFwcHlfbG9uZw==,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://user-gold-cdn.xitu.io/2020/2/6/17019d47af7a3642?w=998&h=482&f=jpeg&s=83118)
 然后在该文件中添加以下代码：
 
 ```js
@@ -92,7 +95,7 @@ cd ios && pod install
 
 **第六步：**
 配置桥接文件 ：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2020010410414597.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaGFwcHlfbG9uZw==,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://user-gold-cdn.xitu.io/2020/2/6/17019d47dd7cb282?w=2294&h=796&f=jpeg&s=278668)
 
 **第七步：**
 在AppDelegate.m文件中添加百度地图配置
@@ -179,9 +182,35 @@ cd ios && pod install
 ## Polyline属性
 |Prop|Type  |Default|Description|
 |--|--|--|--|
-| points | array |[] |折线坐标点列表,[{latitude, longitude}]|
-| color | string |#000000 |线条颜色，需要完整的十六进制值，#000这种解析不了|
+| points | LatLang[] |[] |折线坐标点列表,[{latitude, longitude}]|
+| color | string |#000000 |线条颜色，需要完整的rrggbb类型， 如：#000000|
 | width | number |6 |线条宽度|
+
+## Arc属性
+|Prop|Type  |Default|Description|
+|--|--|--|--|
+| points | LatLang[] |[] |弧线坐标点列表,[{latitude, longitude}]|
+| color | string |#000000 |线条颜色，需要完整的rrggbb类型， 如：#000000|
+| width | number |4 |线条宽度|
+
+## Circle属性
+|Prop|Type  |Default|Description|
+|--|--|--|--|
+| circleCenter | LatLang | |圆形中点|
+| color | string |#000000 |边框颜色，需要完整的rrggbb类型， 如：#000000|
+| width | number |4 |边框宽度|
+| radius | number |1400 |圆形半径|
+| fillColor | string |#F6000F |圆形背景颜色，android可使用[十六进制](https://www.jianshu.com/p/fde8e87bf3ff)控制透明度， ios使用fillColorAlpha属性|
+| fillColorAlpha | number |0.5 |圆形背景颜色透明度，仅ios|
+
+## Polygon属性
+|Prop|Type  |Default|Description|
+|--|--|--|--|
+| points | LatLang[] | |多边形坐标点列表|
+| color | string |#000000 |边框颜色，需要完整的rrggbb类型， 如：#000000|
+| width | number |4 |边框宽度|
+| fillColor | string |#F6000F |圆形背景颜色，android可使用[十六进制](https://www.jianshu.com/p/fde8e87bf3ff)控制透明度， ios使用fillColorAlpha属性|
+| fillColorAlpha | number |0.5 |圆形背景颜色透明度，仅ios|
 
 ## Geolocation Methods
 ## 定位方法

@@ -2,51 +2,47 @@ package com.rn.s.baidumap.mapview;
 
 import android.graphics.Color;
 
-import com.rn.s.baidumap.view.OverlayPolyline;
 import com.baidu.mapapi.model.LatLng;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
+import com.rn.s.baidumap.view.OverlayArc;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by sujialong on 2019/7/9.
- */
-
-public class OverlayPolylineManager extends SimpleViewManager<OverlayPolyline> {
+public class OverlayArcManager extends SimpleViewManager<OverlayArc> {
 
     @Override
     public String getName() {
-        return "RCTPolylineView";
+        return "RCTArcView";
     }
 
     @Override
-    protected OverlayPolyline createViewInstance(ThemedReactContext reactContext) {
-        return new OverlayPolyline(reactContext);
+    protected OverlayArc createViewInstance(ThemedReactContext reactContext) {
+        return new OverlayArc(reactContext);
     }
 
     @ReactProp(name = "points")
-    public void setPoints(OverlayPolyline overlayPolyline, ReadableArray points) {
+    public void setPoints(OverlayArc overlayArc, ReadableArray points) {
         List list = new ArrayList();
         for (int i = 0, len = points.size(); i < len; i++){
             ReadableMap item = points.getMap(i);
             LatLng latLng = new LatLng(item.getDouble("latitude"), item.getDouble("longitude"));
             list.add(latLng);
         }
-        overlayPolyline.setPoints(list);
+        overlayArc.setPoints(list);
     }
 
     @ReactProp(name = "color")
-    public void setColor(OverlayPolyline overlayPolyline, String color) {
-        overlayPolyline.setColor(Color.parseColor(color));
+    public void setColor(OverlayArc overlayArc, String color) {
+        overlayArc.setColor(Color.parseColor(color));
     }
 
     @ReactProp(name = "width")
-    public void setWidth(OverlayPolyline overlayPolyline, int width) {
-        overlayPolyline.setLineWidth(width);
+    public void setWidth(OverlayArc overlayArc, int width) {
+        overlayArc.setWidth(width);
     }
 }

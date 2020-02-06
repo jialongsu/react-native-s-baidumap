@@ -16,6 +16,18 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* reactNativeSBaidumapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* reactNativeSBaidumapTests.m */; };
+		4B456DDB23EBD3F700BC7D35 /* CustomBMKArcline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B456DDA23EBD3F700BC7D35 /* CustomBMKArcline.swift */; };
+		4B456DDD23EBD47900BC7D35 /* RCTArcViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B456DDC23EBD47900BC7D35 /* RCTArcViewManager.m */; };
+		4B456DDF23EBD4A700BC7D35 /* RCTArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B456DDE23EBD4A700BC7D35 /* RCTArcView.swift */; };
+		4B456DE123EBD4CC00BC7D35 /* RCTArcOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B456DE023EBD4CC00BC7D35 /* RCTArcOverView.swift */; };
+		4B456DE423EBF19000BC7D35 /* CustomBMKCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B456DE323EBF19000BC7D35 /* CustomBMKCircle.swift */; };
+		4B456DE623EBF21800BC7D35 /* RCTCircleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B456DE523EBF21800BC7D35 /* RCTCircleManager.m */; };
+		4B456DE823EBF23B00BC7D35 /* RCTCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B456DE723EBF23B00BC7D35 /* RCTCircleView.swift */; };
+		4B456DEA23EBF27800BC7D35 /* RCTCircleOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B456DE923EBF27800BC7D35 /* RCTCircleOverView.swift */; };
+		4B456DED23EC0B1100BC7D35 /* CustomBMKPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B456DEC23EC0B1100BC7D35 /* CustomBMKPolygon.swift */; };
+		4B456DEF23EC0B5400BC7D35 /* RCTPolygonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B456DEE23EC0B5400BC7D35 /* RCTPolygonManager.m */; };
+		4B456DF123EC0B9700BC7D35 /* RCTPolygonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B456DF023EC0B9700BC7D35 /* RCTPolygonView.swift */; };
+		4B456DF323EC0BCB00BC7D35 /* RCTPolygonOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B456DF223EC0BCB00BC7D35 /* RCTPolygonOverView.swift */; };
 		4B54302123B602F6000495F3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54300C23B602F6000495F3 /* UIColor.swift */; };
 		4B54302223B602F6000495F3 /* BaiduGeolocationModuleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B54300E23B602F6000495F3 /* BaiduGeolocationModuleManager.m */; };
 		4B54302323B602F6000495F3 /* BaiduGeolocationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54300F23B602F6000495F3 /* BaiduGeolocationModule.swift */; };
@@ -78,6 +90,18 @@
 		2D02E4901E0B4A5D006451C7 /* reactNativeSBaidumap-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "reactNativeSBaidumap-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F354F8F97027D5C5BA2CF5B /* libPods-reactNativeSBaidumap-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reactNativeSBaidumap-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4687AEDAC8405BF70A0AF9AF /* Pods-reactNativeSBaidumap-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactNativeSBaidumap-tvOS.release.xcconfig"; path = "Target Support Files/Pods-reactNativeSBaidumap-tvOS/Pods-reactNativeSBaidumap-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		4B456DDA23EBD3F700BC7D35 /* CustomBMKArcline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBMKArcline.swift; sourceTree = "<group>"; };
+		4B456DDC23EBD47900BC7D35 /* RCTArcViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTArcViewManager.m; sourceTree = "<group>"; };
+		4B456DDE23EBD4A700BC7D35 /* RCTArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTArcView.swift; sourceTree = "<group>"; };
+		4B456DE023EBD4CC00BC7D35 /* RCTArcOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTArcOverView.swift; sourceTree = "<group>"; };
+		4B456DE323EBF19000BC7D35 /* CustomBMKCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBMKCircle.swift; sourceTree = "<group>"; };
+		4B456DE523EBF21800BC7D35 /* RCTCircleManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTCircleManager.m; sourceTree = "<group>"; };
+		4B456DE723EBF23B00BC7D35 /* RCTCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTCircleView.swift; sourceTree = "<group>"; };
+		4B456DE923EBF27800BC7D35 /* RCTCircleOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTCircleOverView.swift; sourceTree = "<group>"; };
+		4B456DEC23EC0B1100BC7D35 /* CustomBMKPolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBMKPolygon.swift; sourceTree = "<group>"; };
+		4B456DEE23EC0B5400BC7D35 /* RCTPolygonManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTPolygonManager.m; sourceTree = "<group>"; };
+		4B456DF023EC0B9700BC7D35 /* RCTPolygonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTPolygonView.swift; sourceTree = "<group>"; };
+		4B456DF223EC0BCB00BC7D35 /* RCTPolygonOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTPolygonOverView.swift; sourceTree = "<group>"; };
 		4B54300C23B602F6000495F3 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		4B54300E23B602F6000495F3 /* BaiduGeolocationModuleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaiduGeolocationModuleManager.m; sourceTree = "<group>"; };
 		4B54300F23B602F6000495F3 /* BaiduGeolocationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiduGeolocationModule.swift; sourceTree = "<group>"; };
@@ -196,6 +220,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4B456DD923EBD3A800BC7D35 /* RCTArcView */ = {
+			isa = PBXGroup;
+			children = (
+				4B456DDA23EBD3F700BC7D35 /* CustomBMKArcline.swift */,
+				4B456DDC23EBD47900BC7D35 /* RCTArcViewManager.m */,
+				4B456DDE23EBD4A700BC7D35 /* RCTArcView.swift */,
+				4B456DE023EBD4CC00BC7D35 /* RCTArcOverView.swift */,
+			);
+			path = RCTArcView;
+			sourceTree = "<group>";
+		};
+		4B456DE223EBF11400BC7D35 /* RCTCircleView */ = {
+			isa = PBXGroup;
+			children = (
+				4B456DE323EBF19000BC7D35 /* CustomBMKCircle.swift */,
+				4B456DE523EBF21800BC7D35 /* RCTCircleManager.m */,
+				4B456DE723EBF23B00BC7D35 /* RCTCircleView.swift */,
+				4B456DE923EBF27800BC7D35 /* RCTCircleOverView.swift */,
+			);
+			path = RCTCircleView;
+			sourceTree = "<group>";
+		};
+		4B456DEB23EC0AEF00BC7D35 /* RCTPolygonView */ = {
+			isa = PBXGroup;
+			children = (
+				4B456DEC23EC0B1100BC7D35 /* CustomBMKPolygon.swift */,
+				4B456DEE23EC0B5400BC7D35 /* RCTPolygonManager.m */,
+				4B456DF023EC0B9700BC7D35 /* RCTPolygonView.swift */,
+				4B456DF223EC0BCB00BC7D35 /* RCTPolygonOverView.swift */,
+			);
+			path = RCTPolygonView;
+			sourceTree = "<group>";
+		};
 		4B54300A23B602F6000495F3 /* RNSBaidumap */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +290,9 @@
 		4B54301223B602F6000495F3 /* mapViews */ = {
 			isa = PBXGroup;
 			children = (
+				4B456DEB23EC0AEF00BC7D35 /* RCTPolygonView */,
+				4B456DE223EBF11400BC7D35 /* RCTCircleView */,
+				4B456DD923EBD3A800BC7D35 /* RCTArcView */,
 				4B54301323B602F6000495F3 /* BaidumapView */,
 				4B54301723B602F6000495F3 /* RCTPolylineView */,
 				4B54301C23B602F6000495F3 /* RCTMarkerView */,
@@ -683,13 +743,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B54302423B602F6000495F3 /* BaiduMapSearch.swift in Sources */,
+				4B456DF323EC0BCB00BC7D35 /* RCTPolygonOverView.swift in Sources */,
 				4B54302623B602F6000495F3 /* BaiduMapViewManager.m in Sources */,
+				4B456DEA23EBF27800BC7D35 /* RCTCircleOverView.swift in Sources */,
+				4B456DDF23EBD4A700BC7D35 /* RCTArcView.swift in Sources */,
 				4B54302223B602F6000495F3 /* BaiduGeolocationModuleManager.m in Sources */,
+				4B456DED23EC0B1100BC7D35 /* CustomBMKPolygon.swift in Sources */,
+				4B456DDD23EBD47900BC7D35 /* RCTArcViewManager.m in Sources */,
+				4B456DF123EC0B9700BC7D35 /* RCTPolygonView.swift in Sources */,
 				4B54302B23B602F6000495F3 /* RCTPolylineView.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				4B54302723B602F6000495F3 /* BaiduMapOverView.swift in Sources */,
+				4B456DE823EBF23B00BC7D35 /* RCTCircleView.swift in Sources */,
+				4B456DDB23EBD3F700BC7D35 /* CustomBMKArcline.swift in Sources */,
 				4B54303023B602F6000495F3 /* RCTMarkerView.swift in Sources */,
 				4B981CB523B76F0F00080255 /* RoutePlanSearchModuleManager.m in Sources */,
+				4B456DE623EBF21800BC7D35 /* RCTCircleManager.m in Sources */,
 				4B54302323B602F6000495F3 /* BaiduGeolocationModule.swift in Sources */,
 				4B724EBB23C1E5E6007AA2AC /* OfflineMapModuleManager.m in Sources */,
 				4B54302E23B602F6000495F3 /* CustomAnnotation.swift in Sources */,
@@ -700,8 +769,11 @@
 				4B54302D23B602F6000495F3 /* RCTMarkerOverView.swift in Sources */,
 				4B54302F23B602F6000495F3 /* RCTMarkerViewManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				4B456DE123EBD4CC00BC7D35 /* RCTArcOverView.swift in Sources */,
+				4B456DEF23EC0B5400BC7D35 /* RCTPolygonManager.m in Sources */,
 				4B54302923B602F6000495F3 /* RCTPolylineOverView.swift in Sources */,
 				4B54302A23B602F6000495F3 /* RCTPolylineViewManager.m in Sources */,
+				4B456DE423EBF19000BC7D35 /* CustomBMKCircle.swift in Sources */,
 				4B724EBD23C1E613007AA2AC /* OfflineMapModule.swift in Sources */,
 				4B54302523B602F6000495F3 /* BaiduMapSearchManager.m in Sources */,
 			);

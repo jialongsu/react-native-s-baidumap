@@ -322,6 +322,40 @@ class BaiduMapOverView: BMKMapView, BMKMapViewDelegate{
       polylineView?.lineWidth = newOverlay.width as! CGFloat
       newOverlay.polylineView = polylineView!;
       return polylineView
+    } else if overlay.isKind(of: BMKArcline.self) {
+      let newOverlay = overlay as! CustomBMKArcline
+      //初始化一个overlay并返回相应的BMKArclineView的实例
+      let arclineView = BMKArclineView(arcline: overlay as? BMKArcline)
+      //设置arclineView的画笔颜色
+      arclineView?.strokeColor = UIColor.colorWithHex(hexStr: newOverlay.color)
+      //设置arclineView的画笔宽度为32
+      arclineView?.lineWidth = newOverlay.width as! CGFloat
+      newOverlay.arclineView = arclineView!;
+      return arclineView
+    } else if overlay.isKind(of: BMKCircle.self) {
+      let newOverlay = overlay as! CustomBMKCircle
+      //初始化一个overlay并返回相应的BMKCircleView的实例
+      let circleView: BMKCircleView = BMKCircleView(circle: overlay as? BMKCircle)
+      //设置circleView的填充色
+      circleView.fillColor = UIColor.colorWithHexAlpha(hexStr: newOverlay.fillColor, alpha: newOverlay.fillColorAlpha)
+      //设置circleView的画笔（边框）颜色
+      circleView.strokeColor = UIColor.colorWithHex(hexStr: newOverlay.color)
+      //设置circleView的轮廓宽度
+      circleView.lineWidth = newOverlay.width as! CGFloat
+      newOverlay.circleView = circleView;
+      return circleView
+    }else if overlay.isKind(of: BMKPolygon.self) {
+      let newOverlay = overlay as! CustomBMKPolygon
+      //初始化一个overlay并返回相应的BMKPolygonView的实例
+      let polygonView = BMKPolygonView(polygon: overlay as? BMKPolygon)
+      //设置polygonView的填充色
+      polygonView?.fillColor = UIColor.colorWithHexAlpha(hexStr: newOverlay.fillColor, alpha: newOverlay.fillColorAlpha)
+      //设置polygonView的画笔（边框）颜色
+      polygonView?.strokeColor = UIColor.colorWithHex(hexStr: newOverlay.color)
+      //设置polygonView的轮廓宽度
+      polygonView?.lineWidth = newOverlay.width as! CGFloat
+      newOverlay.polygonView = polygonView;
+      return polygonView
     }
     return nil
   }
@@ -333,6 +367,15 @@ class BaiduMapOverView: BMKMapView, BMKMapViewDelegate{
     }else if(subview is RCTPolylineOverView) {
       let _subview = subview as? RCTPolylineOverView;
       _subview?.addToMap(self)
+    }else if(subview is RCTArcOverView) {
+      let _subview = subview as? RCTArcOverView;
+      _subview?.addToMap(self)
+    }else if(subview is RCTCircleOverView) {
+      let _subview = subview as? RCTCircleOverView;
+      _subview?.addToMap(self)
+    }else if(subview is RCTPolygonOverView) {
+      let _subview = subview as? RCTPolygonOverView;
+      _subview?.addToMap(self)
     }
   }
   
@@ -343,6 +386,15 @@ class BaiduMapOverView: BMKMapView, BMKMapViewDelegate{
       }else if(subview is RCTPolylineOverView) {
         let _subview = subview as? RCTPolylineOverView;
         self.remove(_subview?.polyline)
+      }else if(subview is RCTArcOverView) {
+        let _subview = subview as? RCTArcOverView;
+        self.remove(_subview?.arcline)
+      }else if(subview is RCTCircleOverView) {
+        let _subview = subview as? RCTCircleOverView;
+        self.remove(_subview?.circle)
+      }else if(subview is RCTPolygonOverView) {
+        let _subview = subview as? RCTPolygonOverView;
+        self.remove(_subview?.polygon)
       }
   }
   

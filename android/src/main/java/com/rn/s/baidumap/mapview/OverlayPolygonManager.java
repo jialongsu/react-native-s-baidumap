@@ -2,51 +2,53 @@ package com.rn.s.baidumap.mapview;
 
 import android.graphics.Color;
 
-import com.rn.s.baidumap.view.OverlayPolyline;
 import com.baidu.mapapi.model.LatLng;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
+import com.rn.s.baidumap.view.OverlayCircle;
+import com.rn.s.baidumap.view.OverlayPolygon;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by sujialong on 2019/7/9.
- */
-
-public class OverlayPolylineManager extends SimpleViewManager<OverlayPolyline> {
+public class OverlayPolygonManager extends SimpleViewManager<OverlayPolygon> {
 
     @Override
     public String getName() {
-        return "RCTPolylineView";
+        return "RCTPolygonView";
     }
 
     @Override
-    protected OverlayPolyline createViewInstance(ThemedReactContext reactContext) {
-        return new OverlayPolyline(reactContext);
+    protected OverlayPolygon createViewInstance(ThemedReactContext reactContext) {
+        return new OverlayPolygon(reactContext);
     }
 
     @ReactProp(name = "points")
-    public void setPoints(OverlayPolyline overlayPolyline, ReadableArray points) {
+    public void setPoints(OverlayPolygon overlayPolygon, ReadableArray points) {
         List list = new ArrayList();
         for (int i = 0, len = points.size(); i < len; i++){
             ReadableMap item = points.getMap(i);
             LatLng latLng = new LatLng(item.getDouble("latitude"), item.getDouble("longitude"));
             list.add(latLng);
         }
-        overlayPolyline.setPoints(list);
+        overlayPolygon.setPoints(list);
     }
 
     @ReactProp(name = "color")
-    public void setColor(OverlayPolyline overlayPolyline, String color) {
-        overlayPolyline.setColor(Color.parseColor(color));
+    public void setColor(OverlayPolygon overlayPolygon, String color) {
+        overlayPolygon.setColor(Color.parseColor(color));
     }
 
     @ReactProp(name = "width")
-    public void setWidth(OverlayPolyline overlayPolyline, int width) {
-        overlayPolyline.setLineWidth(width);
+    public void setWidth(OverlayPolygon overlayPolygon, int width) {
+        overlayPolygon.setWidth(width);
+    }
+
+    @ReactProp(name = "fillColor")
+    public void setFillColor(OverlayPolygon overlayPolygon, String fillColor) {
+        overlayPolygon.setFillColor(Color.parseColor(fillColor));
     }
 }

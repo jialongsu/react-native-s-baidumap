@@ -8,6 +8,7 @@ import GeolocationDem from './geolocationDemo';
 import SearchDemo from './searchDemo';
 import RoutePlanSearchDemo from './routePlanSearchDemo';
 import OfflineMapDemo from './offlineMapDemo';
+import OverlayDemo from './overlayDemo';
 
 const AppNavigator = createStackNavigator(
   {
@@ -28,6 +29,9 @@ const AppNavigator = createStackNavigator(
     },
     OfflineMapDemo: {
       screen: OfflineMapDemo,
+    },
+    OverlayDemo: {
+      screen: OverlayDemo,
     },
   },
   {
