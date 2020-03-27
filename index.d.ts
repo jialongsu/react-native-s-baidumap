@@ -399,12 +399,12 @@ interface IGeolocation {
 }
 
 interface IOptions {
-  coorType: coorTypes; //返回经纬度坐标类型
-  scanSpan: number; //设置发起定位请求的间隔，int类型，单位ms，仅限android
-  openGps: boolean; //设置是否使用gps，仅限android
-  needDeviceDirect: boolean; //在网络定位时，是否需要设备方向，仅限android
-  backgroundLocationUpdates: boolean; //启动后台定位，仅限ios
-  distanceFilter: number; //设定定位的最小更新距离，仅限ios
+  coorType?: coorTypes; //返回经纬度坐标类型
+  scanSpan?: number; //设置发起定位请求的间隔，int类型，单位ms，仅限android
+  openGps?: boolean; //设置是否使用gps，仅限android
+  needDeviceDirect?: boolean; //在网络定位时，是否需要设备方向，仅限android
+  backgroundLocationUpdates?: boolean; //启动后台定位，仅限ios
+  distanceFilter?: number; //设定定位的最小更新距离，仅限ios
 }
 
 interface ILocation {

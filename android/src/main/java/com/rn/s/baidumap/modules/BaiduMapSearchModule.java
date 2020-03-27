@@ -54,14 +54,17 @@ public class BaiduMapSearchModule extends ReactContextBaseJavaModule {
                     List<PoiInfo> poiList = poiResult.getAllPoi();
                     for (PoiInfo info: poiList) {
                         WritableMap attr = Arguments.createMap();
-                        attr.putString("name", info.name);
-                        attr.putString("address", info.address);
-                        attr.putString("city", info.city);
-                        attr.putString("province", info.province);
-                        attr.putString("uid", info.uid);
-                        attr.putDouble("latitude", info.location.latitude);
-                        attr.putDouble("longitude", info.location.longitude);
-                        data.pushMap(attr);
+                        LatLng latLng = info.location;
+                        if(latLng != null) {
+                            attr.putString("name", info.name);
+                            attr.putString("address", info.address);
+                            attr.putString("city", info.city);
+                            attr.putString("province", info.province);
+                            attr.putString("uid", info.uid);
+                            attr.putDouble("latitude", latLng.latitude);
+                            attr.putDouble("longitude", latLng.longitude);
+                            data.pushMap(attr);
+                        }
                     }
                     writableMap.putInt("type", type);
                     writableMap.putInt("code", 1000);
@@ -101,15 +104,18 @@ public class BaiduMapSearchModule extends ReactContextBaseJavaModule {
                     List<SuggestionResult.SuggestionInfo> poiLIst = suggestionResult.getAllSuggestions();
                     for (SuggestionResult.SuggestionInfo info: poiLIst) {
                         WritableMap attr = Arguments.createMap();
-                        attr.putString("address", info.getAddress());
-                        attr.putString("city", info.getCity());
-                        attr.putString("district", info.getDistrict());
-                        attr.putString("uid", info.getUid());
-                        attr.putString("key", info.getKey());
-                        attr.putString("name", info.getKey());
-                        attr.putDouble("latitude", info.getPt().latitude);
-                        attr.putDouble("longitude", info.getPt().longitude);
-                        data.pushMap(attr);
+                        LatLng latLng = info.getPt();
+                        if(latLng != null) {
+                            attr.putString("address", info.getAddress());
+                            attr.putString("city", info.getCity());
+                            attr.putString("district", info.getDistrict());
+                            attr.putString("uid", info.getUid());
+                            attr.putString("key", info.getKey());
+                            attr.putString("name", info.getKey());
+                            attr.putDouble("latitude", latLng.latitude);
+                            attr.putDouble("longitude", latLng.longitude);
+                            data.pushMap(attr);
+                        }
                     }
                     writableMap.putInt("type", type);
                     writableMap.putInt("code", 1000);

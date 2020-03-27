@@ -1,7 +1,3 @@
-
-
-
-
 # [react-native-s-baidumap](https://github.com/1035901787/react-native-s-baidumap)
 百度地图 React Native 模块，同时支持ios和android，react native 0.60.0+。
 

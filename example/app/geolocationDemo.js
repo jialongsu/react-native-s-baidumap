@@ -5,7 +5,7 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet, View, Button} from 'react-native';
+import {StyleSheet, View, Button, Text} from 'react-native';
 import {MapView, Marker, Geolocation} from 'react-native-s-baidumap';
 import riderIcon from './images/riderIcon.png';
 
@@ -18,7 +18,8 @@ export default class App extends Component {
       longitude: 116.404844,
     },
     myLocationData: {},
-    isShow: true,
+    isShow: false,
+    markerAry: [],
   };
 
   static navigationOptions = {
@@ -37,6 +38,24 @@ export default class App extends Component {
       scanSpan: 8000, //android 间隔返回位置信息
       distanceFilter: 8, //ios 最小更新距离
     });
+    setTimeout(() => {
+      this.setState({
+        markerAry: [
+          {
+            latitude: 38.714607,
+            longitude: 116.706844,
+          },
+          {
+            latitude: 39.894607,
+            longitude: 116.796844,
+          },
+          {
+            latitude: 37.984607,
+            longitude: 116.916844,
+          },
+        ],
+      });
+    }, 2000);
     //定位回调
     this.geolocationListener = geolocation.addListener(res => {
       console.log('location.addListener', res);
@@ -133,7 +152,21 @@ export default class App extends Component {
           zoomMaxLevel={18}
           locationEnabled
           myLocationData={myLocationData}
-          centerLatLng={location}>
+          centerLatLng={location}
+          onMarkerClick={ev => {
+            console.log('onMarkerClick:', ev);
+          }}>
+          {this.state.markerAry &&
+            this.state.markerAry.map((item, i) => {
+              return (
+                <Marker
+                  title={'Marker' + i}
+                  active={true}
+                  icon={require('./images/riderIcon.png')}
+                  location={item}
+                />
+              );
+            })}
           <Marker
             title={'Marker'}
             active={true}

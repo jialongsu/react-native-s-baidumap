@@ -20,6 +20,7 @@ class BaiduMapOverView: BMKMapView, BMKMapViewDelegate{
   @objc public var onMarkerDragStart: RCTBubblingEventBlock!
   @objc public var onMarkerDrag: RCTBubblingEventBlock!
   @objc public var onMarkerDragEnd: RCTBubblingEventBlock!
+  @objc public var onMarkerClick: RCTBubblingEventBlock!
   
   lazy var userLocation: BMKUserLocation = {
     return BMKUserLocation()
@@ -267,6 +268,10 @@ class BaiduMapOverView: BMKMapView, BMKMapViewDelegate{
         self.onMarkerDragEnd(data)
       }
     }
+  }
+    
+  func mapView(_ mapView: BMKMapView!, didSelect view: BMKAnnotationView!) {
+    self.onMarkerClick(["latitude": view.annotation.coordinate.latitude, "longitude":view.annotation.coordinate.longitude]);
   }
   
   //MARK:BMKMapViewDelegate

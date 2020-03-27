@@ -311,13 +311,17 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> implements Li
             @Override
             public boolean onMarkerClick(Marker marker) {
                 OverlayMarker selMarker = markerMap.get(marker.getId());
+                WritableMap writableMap =  Arguments.createMap();
+                LatLng position =  marker.getPosition();
+                writableMap.putDouble("latitude", position.latitude);
+                writableMap.putDouble("longitude", position.longitude);
                 if( selMarker != null) {
                     boolean active = selMarker.getPropActive();
                     if(active) {
                         selMarker.setActive(!selMarker.getActive());
                     }
                 }
-                onSendEvent(reactContext, view, "onMarkerClick", Arguments.createMap());
+                onSendEvent(reactContext, view, "onMarkerClick", writableMap);
                 return true;
             }
         });

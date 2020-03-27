@@ -38,6 +38,7 @@ RCT_EXPORT_VIEW_PROPERTY(onMapStatusChange, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onMapStatusChangeFinish, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onMapLoaded, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onMarkerDrag, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onMarkerClick, RCTBubblingEventBlock)
 
 //RCT_EXPORT_METHOD(setMapCenter:(nonnull NSNumber*) reactTag
 //                  centerLatLng:(NSDictionary *)centerLatLng) {

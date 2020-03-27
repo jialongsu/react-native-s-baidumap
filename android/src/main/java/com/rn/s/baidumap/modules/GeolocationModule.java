@@ -79,6 +79,7 @@ public class GeolocationModule extends ReactContextBaseJavaModule {
                 data.putDouble("direction", location.getDirection());
                 data.putString("buildingId", location.getBuildingID());
                 data.putString("buildingName", location.getBuildingName());
+                data.putString("town", location.getTown());
                 data.putInt("locationType", location.getLocType());
                 onSendEvent("baiduMapLocation", data);
             }

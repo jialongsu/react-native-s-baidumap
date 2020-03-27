@@ -231,6 +231,7 @@ class BaiduGeolocationModule: RCTEventEmitter, BMKLocationManagerDelegate, BMKLo
     data["Province"] = rgcData?.province
     data["district"] = rgcData?.district
     data["street"] = rgcData?.street
+    data["town"] = rgcData?.town
     data["streetNumber"] = rgcData?.streetNumber
     data["latitude"] = location?.location?.coordinate.latitude
     data["longitude"] = location?.location?.coordinate.longitude

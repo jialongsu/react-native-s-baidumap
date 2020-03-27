@@ -130,6 +130,9 @@ export default class App extends Component {
           zoomControlsVisible={true}
           baiduHeatMapEnabled={false}
           centerLatLng={location}
+          onMarkerClick={ev => {
+            console.log('onMarkerClick:', ev.nativeEvent);
+          }}
           onMapClick={ev => {
             console.log('onMapClick:', ev.nativeEvent);
           }}
@@ -157,7 +160,12 @@ export default class App extends Component {
           onMapLoaded={ev => {
             console.log('onMapLoaded:', ev.nativeEvent);
           }}>
-          <Marker title={titleText} icon={markerIcon1} location={location} />
+          <Marker
+            active
+            title={titleText}
+            icon={markerIcon1}
+            location={location}
+          />
           <Marker
             title={titleText}
             icon={markerIcon2}
