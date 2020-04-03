@@ -35,6 +35,7 @@ import java.util.List;
 public class BaiduMapSearchModule extends ReactContextBaseJavaModule {
 
     private Promise searchPromise;
+    private Promise poiSearchPromise;
     private ReactApplicationContext mReactContext;
     private PoiSearch mPoiSearch = PoiSearch.newInstance();
     private SuggestionSearch mSuggestionSearch = SuggestionSearch.newInstance();
@@ -69,10 +70,10 @@ public class BaiduMapSearchModule extends ReactContextBaseJavaModule {
                     writableMap.putInt("type", type);
                     writableMap.putInt("code", 1000);
                     writableMap.putArray("poiList", data);
-                    searchPromise.resolve(writableMap);
+                    poiSearchPromise.resolve(writableMap);
 //                onSendEvent("BaiduPoiSearch", writableMap);
                 }else {
-                    searchPromise.reject("-1", "搜索失败");
+                    poiSearchPromise.reject("-1", "搜索失败");
                 }
 
             }
@@ -144,7 +145,7 @@ public class BaiduMapSearchModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void searchInCity(String city, String keyword, int pageNum, Promise promise) {
         type = 0;
-        searchPromise = promise;
+        poiSearchPromise = promise;
         mPoiSearch.searchInCity(new PoiCitySearchOption()
                 .city(city) //必填
                 .keyword(keyword) //必填
@@ -163,7 +164,7 @@ public class BaiduMapSearchModule extends ReactContextBaseJavaModule {
         int radius = 1000;
         int pageNum = 20;
         type = 1;
-        searchPromise = promise;
+        poiSearchPromise = promise;
 
         if(options.hasKey("radius")) {
             radius = options.getInt("radius");

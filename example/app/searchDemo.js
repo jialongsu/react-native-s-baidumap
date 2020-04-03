@@ -34,7 +34,7 @@ export default class Page extends Component {
       latitude: 30.328573,
       longitude: 120.185871,
       keyword: '美食',
-      pageNum: 20,
+      pageNum: 10,
       radius: 1000,
     });
     this.setState({

@@ -17,6 +17,8 @@ class BaiduMapSearch: NSObject, BMKPoiSearchDelegate, BMKSuggestionSearchDelegat
 //  var searchNearbyPrmReject: RCTPromiseRejectBlock! //周边检索promise失败回调
   var searchPrmResolve: RCTPromiseResolveBlock! //检索promise成功回调
   var searchPrmReject: RCTPromiseRejectBlock! //检索promise失败回调
+  var poiSearchPrmResolve: RCTPromiseResolveBlock! //城市内搜索promise成功回调
+  var poiSearchPrmReject: RCTPromiseRejectBlock! //城市内搜索promise失败回调
   var searchType = 0; //搜索类型，用于区分结果类型
   var searchTypeAry: [Int] = []; //搜索类型
   let SEARCH_INCITY = 0; //城市内搜索
@@ -55,8 +57,8 @@ class BaiduMapSearch: NSObject, BMKPoiSearchDelegate, BMKSuggestionSearchDelegat
  */
   @objc func searchInCity(_ city: String, _ keyword: String, _ pageNum: Int, _ resolve:@escaping RCTPromiseResolveBlock, _ reject: @escaping RCTPromiseRejectBlock) {
 
-      searchPrmResolve = resolve;
-      searchPrmReject = reject;
+      poiSearchPrmResolve = resolve;
+      poiSearchPrmReject = reject;
       searchType = SEARCH_INCITY
     
       //初始化请求参数类BMKCitySearchOption的实例
@@ -99,8 +101,8 @@ class BaiduMapSearch: NSObject, BMKPoiSearchDelegate, BMKSuggestionSearchDelegat
    */
   @objc func searchNearby(_ options: Dictionary<String, Any>, _ resolve:@escaping RCTPromiseResolveBlock, _ reject: @escaping RCTPromiseRejectBlock) {
 
-      searchPrmResolve = resolve;
-      searchPrmReject = reject;
+      poiSearchPrmResolve = resolve;
+      poiSearchPrmReject = reject;
       searchType = SEARCH_NEARBY
     
       //初始化请求参数类BMKNearbySearchOption的实例
@@ -214,10 +216,10 @@ class BaiduMapSearch: NSObject, BMKPoiSearchDelegate, BMKSuggestionSearchDelegat
         }
         let res: [String : Any] = [ "code": 1000, "poiList": poiList, "type": searchType];
 //        sendJsEvent(name: "BaiduPoiSearch", data: res);
-        searchPrmResolve(res);
+        poiSearchPrmResolve(res);
     }else{
         let res: [String : Any] = [ "code": -1, "msg": "Error:\(errorCode)", "type": searchType];
-        searchPrmReject("-1", "Error:\(errorCode)", NSError(domain: "", code: -1, userInfo: res));
+        poiSearchPrmReject("-1", "Error:\(errorCode)", NSError(domain: "", code: -1, userInfo: res));
 //        sendJsEvent(name: "BaiduPoiSearch", data: res);
     }
   }
