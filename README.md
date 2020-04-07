@@ -49,7 +49,8 @@ yarn add react-native-s-baidumap
 </application>
 ```
 ## IOS配置
-注：ios更新版本需要删除之前导入的引用代码，重新导入新版本才会生效
+注：ios更新版本需要删除之前导入的引用代码，重新导入新版本才会生效。
+
 **第一步：**
 在Podfile文件中加入以下代码：
 
