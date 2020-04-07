@@ -18,12 +18,12 @@
 - 路线规划 ✅
 
 ## DEMO预览
-![预览](https://user-gold-cdn.xitu.io/2020/2/6/17019d47a68789f5?w=211&h=420&f=gif&s=4569699)
+![预览](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAyMC8yLzYvMTcwMTlkNDdhNjg3ODlmNQ?x-oss-process=image/format,png)
 
-![百度离线地图](https://user-gold-cdn.xitu.io/2020/2/6/17019d47a75ed417?w=212&h=419&f=gif&s=303162)
+![百度离线地图](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAyMC8yLzYvMTcwMTlkNDdhNzVlZDQxNw?x-oss-process=image/format,png)
 
 
-![绘制弧线和面](https://user-gold-cdn.xitu.io/2020/2/6/17019e084a428bff?w=296&h=586&f=jpeg&s=55839)
+![绘制弧线和面](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAyMC8yLzYvMTcwMTllMDg0YTQyOGJmZg?x-oss-process=image/format,png)
 
 ## 安装
 
@@ -49,6 +49,7 @@ yarn add react-native-s-baidumap
 </application>
 ```
 ## IOS配置
+注：ios更新版本需要删除之前导入的引用代码，重新导入新版本才会生效
 **第一步：**
 在Podfile文件中加入以下代码：
 
@@ -64,18 +65,18 @@ cd ios && pod install
 ```
 **第三步：**
 等待安装成功后，进入ios工程文件夹，会看到一个.xcworkspace 结尾的文件 ，双击打开
-![在这里插入图片描述](https://user-gold-cdn.xitu.io/2020/2/6/17019d47a7f63d7e?w=838&h=626&f=png&s=153023)
+![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAyMC8yLzYvMTcwMTlkNDdhN2Y2M2Q3ZQ?x-oss-process=image/format,png)
 
 **第四步：**
 选中项目，右键添加文件
-![在这里插入图片描述](https://user-gold-cdn.xitu.io/2020/2/6/17019d47a8c128e2?w=1032&h=1166&f=png&s=1325061)
+![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAyMC8yLzYvMTcwMTlkNDdhOGMxMjhlMg?x-oss-process=image/format,png)
 点击找到本项目node_modules下的react-native-s-baidumap -> iosLib -> RNSBaidumap,
 将整个RNSBaidumap文件夹导入。
-![在这里插入图片描述](https://user-gold-cdn.xitu.io/2020/2/6/17019d47a944bd30?w=1564&h=1360&f=png&s=754858)
+![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAyMC8yLzYvMTcwMTlkNDdhOTQ0YmQzMA?x-oss-process=image/format,png)
 
 **第五步：**
 需要添加桥接文件，选中项目右键，New File，选择h类型的头部文件创建，文件名为：你的项目名+-Bridging-Header，如：reactNativeSBaidumap-Bridging-Header。
-![在这里插入图片描述](https://user-gold-cdn.xitu.io/2020/2/6/17019d47af7a3642?w=998&h=482&f=jpeg&s=83118)
+![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAyMC8yLzYvMTcwMTlkNDdhZjdhMzY0Mg?x-oss-process=image/format,png)
 然后在该文件中添加以下代码：
 
 ```js
@@ -91,7 +92,7 @@ cd ios && pod install
 
 **第六步：**
 配置桥接文件 ：
-![在这里插入图片描述](https://user-gold-cdn.xitu.io/2020/2/6/17019d47dd7cb282?w=2294&h=796&f=jpeg&s=278668)
+![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAyMC8yLzYvMTcwMTlkNDdkZDdjYjI4Mg?x-oss-process=image/format,png)
 
 **第七步：**
 在AppDelegate.m文件中添加百度地图配置
@@ -257,4 +258,4 @@ cd ios && pod install
 | getOfflineAllCityList() :Promise |获取所有支持离线地图的城市 |{code,list:[]} |
 | getDownloadedCityList() :Promise |获取已下载过的离线地图 |{code,list:[]} |
 
-**具体API用法可以参考example。**
+**具体API用法可以参考[example](https://github.com/1035901787/react-native-s-baidumap/tree/master/example)。**
